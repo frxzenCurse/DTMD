@@ -1,0 +1,74 @@
+
+// fonts
+$fs: 16px;
+
+$ff-primary: 'Manrope';
+$ff-secondary: 'Halvar Breitschrift';
+
+// breakpoints, media
+$breakpoints: (
+  xxl: 1920px,
+  xl: 1680px,
+  ll: 1440px,
+  l: 1366px,
+  d: 1280px,
+  t: 1024px,
+  m: 768px,
+  s: 576px,
+  xs: 375px,
+  xxs: 320px,
+);
+@function breakpoint($variant: d) {
+  @return map.get($breakpoints, $variant);
+}
+@function media($direction: ">", $variant: d) {
+  @if $direction == ">" {
+    @return "(min-width: #{breakpoint($variant)})";
+  } @else if $direction == "<" {
+    @return "(max-width: #{breakpoint($variant) - 1px})";
+  } @else if $direction == "<=" {
+    @return "(max-width: #{breakpoint($variant)})";
+  } @else if $direction == "mt" {
+    @return "(min-width: #{breakpoint(m)}) and (max-width: #{breakpoint(t) - 1px})";
+  } @else if $direction == "td" {
+    @return "(min-width: #{breakpoint(t)}) and (max-width: #{breakpoint(d) - 1px})";
+  } @else if $direction == "md" {
+    @return "(min-width: #{breakpoint(m)}) and (max-width: #{breakpoint(d) - 1px})";
+  }
+}
+
+// colors
+$colors: (
+  black: #181D1D,
+  light-dark: #1D2323,
+  dark-alt: #222222,
+  white: #ffffff,
+  white-alt: #F4F4F4,
+  dark-white: #F0F7F3,
+  green: #006525,
+  green-hover: #008C33,
+  green-dark: #21422D,
+  green-alt: #045C25,
+  dark-green: #005C22,
+  green-light: #53EE8C,
+  green-bg: #F0F6F3,
+  gray: #515252,
+  gray-alt: #CBD8D1,
+  gray-bg: #E6E6E6,
+  light-gray: #CBCBCB,
+  gray-line: #D9D9D9,
+  borders: #E9E9E9,
+  borders-alt: #E3E3E3,
+  center-border: #E8E8E8,
+  text-faded: rgba(6, 8, 8, 0.5),
+  error: #E84343,
+  location: #45A5FE,
+  borderCross: #729F83,
+);
+@function color($variant: black) {
+  @return map.get($colors, $variant);
+}
+
+$transition-timing-function: cubic-bezier(0.33, 1, 0.68, 1);
+$transition-duration: .5s;
+$transition: $transition-duration $transition-timing-function;

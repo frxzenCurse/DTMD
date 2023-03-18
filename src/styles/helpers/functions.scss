@@ -1,0 +1,15 @@
+@function font-url($filename-without-extension) {
+  @return url("../assets/fonts/#{$filename-without-extension}.woff");
+}
+
+@function rem($size) {
+  @return math.div($size, $fs) * 1rem;
+}
+
+@function borderColor($opacity, $color: #fff) {
+  @return rgba($color, $opacity);
+}
+
+@function getVw($px, $width) {
+  @return $px / $width * 1vw;
+}
