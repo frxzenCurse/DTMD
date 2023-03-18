@@ -1,0 +1,47 @@
+.about {
+  position: relative;
+  z-index: 0;
+
+  overflow: hidden;
+
+  &__icon {
+    display: flex;
+  }
+
+  &__svg {
+    margin-left: -4.4%;
+
+    flex-shrink: 0;
+    width: 111%;
+    height: auto;
+  }
+
+  &__content {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &__title {
+    max-width: rem(1022px);
+
+    @include f-second;
+    text-transform: uppercase;
+    @include fsl(48px, 110%);
+  }
+
+  &__wrapper {
+    margin-top: rem(-16px);
+
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__text {
+    max-width: rem(634px);
+
+    @include fsl(14px, 140%);
+  }
+}

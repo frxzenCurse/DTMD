@@ -1,5 +1,5 @@
 {
-  "title": "chesnakov-html",
+  "title": "DTMD-html",
 
   "routes": [
     {
@@ -7,8 +7,8 @@
       "title": "Главная"
     },
     {
-      "href": "/about",
-      "title": "О компании"
+      "href": "/catalog",
+      "title": "Каталог"
     }
   ]
 }

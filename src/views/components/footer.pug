@@ -1,3 +1,56 @@
 mixin footer
   footer.footer
-    |footer
+    -
+      var ddata = [
+        {
+          title: "Покупателю",
+          items: ['Доставка и возврат', 'Как оформить заказ', 'Правила оплаты', 'Контакты', ]
+        },
+        {
+          title: "Разделы",
+          items: ['Главная', 'Новинки', 'Каталог', 'Распродажа', ]
+        },
+        {
+          title: "Личный кабинет",
+          items: ['Войти', 'Забыли свой пароль?', 'Регистрация',]
+        },
+      ]
+    .container
+      .footer__inner 
+        .footer__row
+          .footer__col
+            .footer__item
+              a.footer__logo(href="#")
+                +logo-svg.footer__logo-svg
+            .footer__item
+              .footer__text.footer__text--small 
+                |Интернет-магазин мужской одежды DTMD.RU. © 2019-2023
+            .footer__item
+              a.footer__phone(href="tel:+79166506941")
+                |+7 (916) 650-69-41 
+              .footer__text 
+                |Заказы принимаются круглосуточно
+          .footer__col
+            each item in ddata
+              .footer__nav
+                .footer__heading 
+                  |#{item.title}
+                ul.footer__list
+                  each link in item.items 
+                    li.footer__list-item
+                      a.footer__list-link(href="#")
+                        |#{link} 
+      .footer__bot 
+        .footer__bot-row 
+          .footer__bot-col
+            .footer__join 
+              |Присоединяйтесь: #[a.footer__join-link(href="#")  VK]
+          .footer__bot-col
+            ul.footer__bot-links
+              each item in ['Пользовательское соглашение', 'Карта сайта'] 
+                li.footer__bot-item
+                  a.footer__bot-link(href="#") 
+                    |#{item}
+          .footer__bot-col
+            .footer__made 
+              |Разработка сайта:  #[a.footer__made-link(href="#")  ИВОЛВ]

@@ -1,0 +1,85 @@
+extends ../app
+
+include ../components/card
+include ../components/about
+
+block header 
+  +header.header--main
+
+block content
+  .main-page
+    section.main-page__intro
+      .main-page__intro-slider
+        .swiper-container.swiper-container--visible.main-page__intro-slider(data-slider-id='main' data-slider-prev='' data-slider-next='2')
+          .swiper-wrapper
+            - for (i = 0; i < 4; i++)
+              .swiper-slide
+                .main-page__intro-slide
+                  .main-page__intro-content   
+                    .main-page__intro-title.title 
+                      |РОССИЙСКИЙ БРЕНД МУЖСКОЙ ОДЕЖДЫ #{i}
+                    .main-page__intro-text 
+                      |Собственная разработка лекал, премиальные итальянские ткани, долговечные мембраны и утеплители
+                    .main-page__intro-button 
+                      +link.button--wide
+                        |Подробнее
+                  .main-page__intro-bg 
+                    +intro-bg-svg.main-page__intro-svg 
+                  .main-page__intro-image
+                    img.main-page__intro-img(src="assets/images/intro-slide.png", alt="")
+      .main-page__intro-pagination
+        .main-page__intro-fraction(data-slider-fraction='')
+          |01
+        .swiper-pagination.swiper-pagination--custom
+        .main-page__intro-btn(data-main-next='')
+          +arrow-svg.main-page__intro-arrow
+    section.main-page__features
+      .container 
+        h3.heading.main-page__features-heading 
+          |ВСЕ НАШИ ИЗДЕЛИЯ МЫ ПРОИЗВОДИМ НА ПРОФЕССИОНАЛЬНЫХ РОССИЙСКИХ ФАБРИКАХ
+        ul.main-page__features-list 
+          li.main-page__features-item 
+            .main-page__features-icon   
+              +features-1-svg.main-page__features-svg
+            .main-page__features-text 
+              |Уникальные лекала и конструкции, разработанные собственными контрукторами-технолагами
+          li.main-page__features-item 
+            .main-page__features-icon   
+              +features-2-svg.main-page__features-svg
+            .main-page__features-text 
+              |Гарантия качества от #[br] производителя: 12 месяцев на #[br] каждое изделие
+          li.main-page__features-item 
+            .main-page__features-icon   
+              +features-3-svg.main-page__features-svg
+            .main-page__features-text 
+              |Щоурум в центре Москвы и доставка по всей РФ с примеркой и покупкой только того, что вам подойдет
+    section.main-page__catalog
+      .container 
+        .main-page__catalog-top   
+          h3.heading 
+            |новая коллекция: весна 2023
+          .main-page__catalog-btn 
+            +link
+              |Перейти в каталог
+        .main-page__catalog-grid 
+          +card(img = 'product-1')
+          +card(img = 'product-2')
+          +card(img = 'product-3' discount = true isActive = true)
+          +card(img = 'product-1')
+    section.main-page__new
+      .container 
+        .main-page__new-row 
+          .main-page__new-col
+            img.main-page__new-img(src="assets/images/new.jpg", alt="")
+          .main-page__new-col
+            h3.main-page__new-heading.heading 
+              |Новая коллекция мужской одежды
+            .main-page__new-text 
+              p
+                |Эффектные шерстяные куртки-рубашки из премиального итальянского полотна, демисезонные пуховики и жилеты с утеплителем из натурального пуха, стильные тренчи с влагозащитной мембраной и элегантные ветровки. 
+              p 
+                |И, конечно же, базовая коллекция джемперов, поло, лонгсливов и футболок, выполненных из 100% натуральных тканей.
+            .main-page__new-btn 
+              +link
+                |Перейти в каталог
+    +about

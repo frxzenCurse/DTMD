@@ -1,0 +1,14 @@
+mixin card 
+  a.card(href="#")
+    .card__container 
+      if (attributes.discount)
+        .card__discount
+          |- 15%
+      .card__icon(class=(attributes.isActive ? 'active' : null))
+        +favorite-svg.card__svg
+      .card__image 
+        img.card__img(src=`assets/images/${attributes.img}.jpg`, alt="")
+    .card__title 
+      |Брюки PELEGRINNI 105
+    .card__text 
+      |12 400 руб.

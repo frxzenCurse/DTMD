@@ -1,3 +1,3 @@
 import "./styles/app.scss";
 
-import "./scripts/test";
+import "./scripts/swipers";

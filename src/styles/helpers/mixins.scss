@@ -1,7 +1,11 @@
 
-@mixin f-main($font-weight: 700) {
+@mixin f-main($font-weight: 500) {
   font-weight: $font-weight;
   font-family: $ff-primary;
+}
+@mixin f-second($font-weight: 700) {
+  font-weight: $font-weight;
+  font-family: $ff-secondary;
 }
 
 @mixin fsl($font-size, $line-height: null) {

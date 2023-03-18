@@ -1,40 +1,11 @@
-/*
-  BEM (global)
+@use "sass:math";
+@use "sass:map";
+@use "sass:string";
 
-  helpers
-
-    variables
-    mixins (use variables)
-
-  layout
-    index (for order)
-
-    normalize (npm)
-    reset (npm)
-
-    my-reset (use helpers)
-    
-    base (use helpers)
-  
-  libs
-    index (for order)
-    
-    swiper (npm)
-    select2 (npm)
-    ...
-  
-  content
-    index (for order)
-
-    utils
-      ...
-    components (use helpers)
-      ...
-    pages (use helpers)
-      ...
-*/
 
 @import "./helpers/*";
+
+@import "./fonts.scss";
 
 @import "./layout/index.scss";
 

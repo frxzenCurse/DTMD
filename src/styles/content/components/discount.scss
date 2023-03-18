@@ -1,0 +1,33 @@
+.discount {
+  padding: rem(14px) 0;
+  
+  background-color: color(black);
+  color: color(white);
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__text {
+    font-weight: 700;
+    @include fsl(12px, 120%);
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+  }
+
+  &__sep {
+    margin: 0 rem(20px);
+    
+    display: inline-block;
+  }
+
+  &__caption {
+    text-decoration: underline;
+    text-transform: uppercase;
+    font-weight: 700;
+    @include fsl(12px, 120%);
+    letter-spacing: 0.02em;
+  }
+}

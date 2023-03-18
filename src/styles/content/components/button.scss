@@ -1,0 +1,17 @@
+.button {
+  padding: rem(15px) rem(30px);
+
+  display: flex;
+  justify-content: center;
+
+  font-family: $ff-primary;
+  cursor: pointer;
+  background-color: none;
+  border: 1px solid color(black);
+  @include fsl(14px, 130%);
+  font-weight: 700;
+
+  &--wide {
+    width: 100%;
+  }
+}
