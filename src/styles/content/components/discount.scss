@@ -18,7 +18,7 @@
   }
 
   &__sep {
-    margin: 0 rem(20px);
+    margin: 0 rem(11px);
     
     display: inline-block;
   }
@@ -28,6 +28,6 @@
     text-transform: uppercase;
     font-weight: 700;
     @include fsl(12px, 120%);
-    letter-spacing: 0.02em;
+    letter-spacing: 0.2em;
   }
 }
