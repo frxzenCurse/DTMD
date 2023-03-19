@@ -13,6 +13,14 @@
     {
       "href": "novelties",
       "title": "Новинки"
+    },
+    {
+      "href": "delivery",
+      "title": "Доставка и возврат"
+    },
+    {
+      "href": "contacts",
+      "title": "Контакты"
     }
   ]
 }
