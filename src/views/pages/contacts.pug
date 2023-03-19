@@ -1,0 +1,46 @@
+extends ../app
+
+
+
+block content
+  .contacts-page
+    section.contacts-page__section 
+      .container
+        .contacts-page__row
+          .contacts-page__col
+            +breadcrumbs(page = 'Контакты')
+            h1.title 
+              |Контакты
+            .contacts-page__grid 
+              .contacts-page__grid-item 
+                .contacts-page__heading 
+                  |Наш шоурум
+                .contacts-page__text 
+                  |Москва, Комсомольский пр-т, #[br] 16/2 стр 3 (Вход с Ксеньевского переулка)
+              .contacts-page__grid-item 
+                .contacts-page__heading 
+                  |Телефон
+                ul.contacts-page__list
+                  li.contacts-page__item
+                    a.contacts-page__text(href="tel:+79166506941")
+                      |+7 (916) 650-69-41
+                  li.contacts-page__item
+                    a.contacts-page__text(href="mailto:info@dtmd.ru")
+                      |info@dtmd.ru
+              .contacts-page__grid-item 
+                .contacts-page__heading 
+                  |Режим работы
+                ul.contacts-page__list
+                  li.contacts-page__item
+                    .contacts-page__text
+                      |Пн-Пт: с 10:00 до 19:00 #[br] Сб: с 11:00 до 16:00
+                  li.contacts-page__item
+                    .contacts-page__text
+                      |Остальное время по #[br] предварительной договоренности
+              .contacts-page__grid-item 
+                .contacts-page__heading 
+                  |Заказы в интернет-магазине принимаются 24/7
+                .contacts-page__text 
+                  |Мы свяжемся с вами в течение 2 часов для подтверждения заказа или на следующий рабочий день, если заказ оформлен вечером или в выходной
+          .contacts-page__col
+            img.contacts-page__img(src="assets/images/map.jpg", alt="")
