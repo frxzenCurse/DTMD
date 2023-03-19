@@ -1,0 +1,97 @@
+.accordion {
+  $comp: &;
+  padding-bottom: rem(10px);
+
+  border-bottom: 1px solid color(gray-light);
+
+  &.active {
+    #{$comp}__title {
+      font-weight: 800;
+    }
+
+    #{$comp}__plus {
+
+      &::after {
+        transform: none;
+      }
+    }
+  }
+
+  &__head {
+    padding-bottom: rem(15px);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: 1px solid transparent;
+    cursor: pointer;
+  }
+
+  &__title {
+    font-weight: 600;
+    @include fsl(14px, 120%);
+    transition: $transition;
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__plus {
+    --size: #{rem(9px)};
+    position: relative;
+    z-index: 0;
+
+    width: var(--size);
+    height: var(--size);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+
+      width: 100%;
+      height: 2px;
+
+      background-color: color(black);
+    }
+
+    &::after {
+      transition: transform $transition;
+      transform: rotate(90deg);
+    }
+  }
+
+  &__body {
+    padding: rem(20px) 0 rem(17px);
+
+    display: none;
+  }
+
+  &__list {
+    padding-left: rem(20px);
+  }
+
+  &__item {
+    display: flex;
+
+    &:not(:first-child) {
+      margin-top: rem(20px);
+    }
+  }
+
+  &__link {
+    @include fsl(14px, 120%);
+    transition: $transition;
+
+    &:hover {
+      font-weight: 700;
+    }
+  }
+}

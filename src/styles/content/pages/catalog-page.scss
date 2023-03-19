@@ -1,0 +1,72 @@
+.catalog-page {
+
+  &__top {
+    margin-bottom: rem(24px);
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+
+  &__select {
+    display: flex;
+    align-items: center;
+  }
+
+  &__text {
+    margin-right: rem(10px);
+    @include fsl(14px, 130%);
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: $col-gap-d;
+    row-gap: rem(20px);
+  }
+
+  &__inner {
+    margin-top: rem(50px);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__btn {
+    flex-shrink: 0;
+    width: calc(#{$col-part-d} * 2);
+  }
+
+  &__pagi {
+    display: flex;
+    align-items: center;
+  }
+  &__pagi-btn {
+    font-weight: 700;
+    cursor: pointer;
+    @include fsl(14px, 130%);
+  }
+
+  &__list {
+    margin: 0 rem(50px);
+    display: flex;
+  }
+
+  &__item {
+    font-weight: 600;
+    @include fsl(14px, 130%);
+    color: color(gray-alt);
+    transition: $transition;
+    cursor: pointer;
+
+    &:not(:first-child) {
+      margin-left: rem(43px);
+    }
+
+    &.active {
+      color: color(black);
+      font-weight: 700;
+    }
+  }
+}

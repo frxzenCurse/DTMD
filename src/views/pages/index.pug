@@ -8,7 +8,7 @@ block footer
 
 
 block content
-  ul
+  ul.routes
     each route in data.routes
       li
-        a(href=route.href)= route.title
+        a.button(href=route.href)= route.title

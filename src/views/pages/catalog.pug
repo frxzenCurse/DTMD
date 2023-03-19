@@ -1,0 +1,64 @@
+extends ../app
+
+include ../components/card
+include ../components/about
+include ../components/accordion
+
+
+block content
+  .catalog-page
+    section.section.section--first
+      .container 
+        .section__row 
+          .section__col
+            ul.nav 
+              each title in ['Верхняя одежда', 'Пиджаки', 'Жилеты', 'Брюки', 'Джемперы', 'Футболки и поло']
+                li.nav__item
+                  +accordion(title = title)
+                    ul.accordion__list
+                      each item in ['Пальто', 'Куртки', 'Ветровки', 'Плащи']
+                        li.accordion__item 
+                          a.accordion__link(href="#")
+                            |#{item}
+          .section__col
+            +breadcrumbs(page='Каталог')
+            .catalog-page__top 
+              h1.title 
+                |Каталог
+              .catalog-page__select 
+                .catalog-page__text
+                  |Сортировать по:
+                .custom-select(data-custom-root='')
+                  select.custom-select__select(data-custom-select='')
+                    each item, i in ['Популярности', 'Цене', 'Отзывам', 'Рейтингу', 'Новинкам']
+                      option(value=`${item} ${i}`)
+                        |#{item} 
+                  .custom-select__button(data-custom-btn='')
+                    .custom-select__text(data-custom-text='')
+                    .custom-select__icon 
+                      +arrow-svg.custom-select__svg
+                  .custom-select__dropdown(data-custom-drop='')
+                    ul.custom-select__list(data-custom-list='')
+            .catalog-page__grid 
+              - for (i = 0; i < 4; i++)
+                +card(img = 'product-1')
+                +card(img = 'product-2')
+                +card(img = 'product-3' discount = true isActive = true)
+            .catalog-page__inner
+              .catalog-page__pagi
+                .catalog-page__pagi-btn 
+                  |Назад
+                ul.catalog-page__list
+                  - for (i = 1; i < 6; i++)
+                    li.catalog-page__item(class=(i === 3 ? 'active' : ''))
+                      |#{i}
+                  li.catalog-page__item 
+                    |...
+                  li.catalog-page__item 
+                    |12
+                .catalog-page__pagi-btn 
+                  |Далее
+              .catalog-page__btn 
+                +button.button--wide
+                  |Показать еще
+    +about.section.section--about

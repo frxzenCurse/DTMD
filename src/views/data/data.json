@@ -9,6 +9,10 @@
     {
       "href": "/catalog",
       "title": "Каталог"
+    },
+    {
+      "href": "/novelties",
+      "title": "Новинки"
     }
   ]
 }

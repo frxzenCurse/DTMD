@@ -1,0 +1,11 @@
+.routes {
+  margin: rem(40px);
+
+  li {
+    display: flex;
+
+    &:not(:first-child) {
+      margin-top: rem(20px);
+    }
+  }
+}
