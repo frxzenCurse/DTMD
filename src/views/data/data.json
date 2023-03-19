@@ -3,15 +3,15 @@
 
   "routes": [
     {
-      "href": "/main",
+      "href": "main",
       "title": "Главная"
     },
     {
-      "href": "/catalog",
+      "href": "catalog",
       "title": "Каталог"
     },
     {
-      "href": "/novelties",
+      "href": "novelties",
       "title": "Новинки"
     }
   ]
