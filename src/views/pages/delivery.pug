@@ -4,4 +4,85 @@ extends ../app
 
 block content
   .delivery-page
-    
+    -
+      var ddata = [
+        {
+          title: 'Оформите заказ, указав необходимые данные',
+          text: 'Мы свяжемся с вами по телефону для подтверждения заказа'
+        },
+        {
+          title: 'Выберите удобный для вас способ оплаты',
+          text: 'Картой на сайте или при получении'
+        },
+        {
+          title: 'Выберите удобный для вам способ доставки',
+          text: 'Курьером СДЭК или #[br] самовывоз из Шоурума'
+        },
+        {
+          title: 'Примерьте при получении и выкупите только то, что вам понравится!',
+        },
+      ]
+    section.delivery-page__steps 
+      .container 
+        +breadcrumbs(page = 'Доставка и возврат')
+        .delivery-page__title.title 
+          |Доставка и возврат
+        .delivery-page__text 
+          |Быстрая и удобная доставка с примеркой и покупкой только того, что вам подойдет!
+        .delivery-page__steps-grid 
+          each item in ddata
+            .delivery-page__steps-item 
+              .delivery-page__steps-heading 
+                |#{item.title}
+              if (item.text)
+                .delivery-page__steps-text 
+                  |#{item.text}
+    section.delivery-page__return
+      .container 
+        .delivery-page__return-container 
+          .delivery-page__features
+            .delivery-page__features-item 
+              .delivery-page__features-icon 
+                +home-svg.delivery-page__features-svg 
+              .delivery-page__features-title 
+                |Бесплатная доставка в шоурум в течение суток
+              .delivery-page__features-text 
+                |*Шоурум в центре Москвы: Комсомольский пр-т, 16/2 стр 3* Срок хранения заказов: 5 дней
+            .delivery-page__features-item 
+              .delivery-page__features-icon 
+                +loc-svg.delivery-page__features-svg 
+              .delivery-page__features-title 
+                |Доставка до пункта выдачи СДЭК
+              .delivery-page__features-text 
+                |*Стоимость доставки 400 руб
+            .delivery-page__features-item 
+              .delivery-page__features-icon 
+                +features-3-svg.delivery-page__features-svg 
+              .delivery-page__features-title 
+                |Курьерская доставка до двери
+              .delivery-page__features-text 
+                |*Стоимость доставки 500 руб
+          .delivery-page__return-row 
+            .delivery-page__return-col
+              img.delivery-page__return-img(src="assets/images/return.jpg", alt="")
+            .delivery-page__return-col
+              h3.delivery-page__return-heading 
+                |Возврат
+              .delivery-page__return-text 
+                |Возврат оформляется легко через пункты выдачи СДЭК
+              ul.delivery-page__return-list 
+                li.delivery-page__return-item 
+                  |Скачайте и заполните #[a(href="#") бланк возврата]
+                li.delivery-page__return-item 
+                  |Отправьте фото бланка нам на почту #[a(href="mailto:info@dtmd.ru") info@dtmd.ru]
+                each item in ['Отправьте посылку вместе с чеком и бланком через пункт выдачи СДЭК', 'Денежные средства за товар возвращаются на указанные реквизиты в течение 14 дней с момента получения нами товара']
+                  li.delivery-page__return-item 
+                    |#{item}
+    section.delivery-page__about
+      .container 
+        h3.delivery-page__return-heading 
+          |О доставке
+        ul.delivery-page__return-list 
+          each item in ['Доставка осуществляется курьерской службой СДЭК. Курьер передаст вам товарный и кассовый чеки. Цена является окончательной, курьер не обладает правом корректировки цены. Стоимость доставки выделяется в документах отдельной графой.', 'Если у вас возникнут вопросы по продукции, пожалуйста, свяжитесь с нами. Курьеры не обладают полной информацией о нашей продукции.', 'При получении проверяйте комплектность доставленного товара, соответствие описанию на нашем сайте, отсутствие механических повреждений. При незаявлении вами при получении товара претензий по поводу механических повреждений, в дальнейшем подобные претензии не рассматриваются.', 'Интернет-магазин имеет право изменить условия доставки в индивидуальном порядке (мы обязательно согласуем с вами предварительно по телефону или электронной почте) или отказать в обслуживании без объяснения причин.', ]
+            li.delivery-page__return-item
+              |#{item}
