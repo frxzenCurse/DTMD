@@ -1,10 +1,16 @@
 .contacts-page {
 
   margin: rem(170px) 0 rem(70px);
+  @media #{media("<")} {
+    margin: rem(90px) 0 rem(40px);
+  }
 
   &__row {
     display: flex;
     align-items: center;
+    @media #{media("<")} {
+      display: block;
+    }
   }
 
   &__col {
@@ -13,19 +19,36 @@
     &:nth-child(1) {
       margin-right: calc(#{$col-part-d});
       width: calc(#{$col-part-d} * 7 - #{$col-gap-d});
+      @media #{media("<")} {
+        margin-right: 0;
+        width: auto;
+      }
     }
     &:nth-child(2) {
       width: calc(#{$col-part-d} * 4);
+      @media #{media("<")} {
+        margin-top: rem(40px);
+        width: auto;
+      }
     }
   }
 
   &__grid {
     margin-top: rem(45px);
-
+    @media #{media("<")} {
+      margin-top: rem(32px);
+    }
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     column-gap: calc(#{$col-part-d});
     row-gap: rem(57px);
+    @media #{media("<")} {
+      row-gap: rem(40px);
+      column-gap: rem(20px);
+    }
+    @media #{media("<", m)} {
+      grid-template-columns: 1fr;
+    }
   }
 
   &__heading {

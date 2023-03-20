@@ -35,6 +35,10 @@
     @include fsl(12px, 120%);
     text-transform: uppercase;
     letter-spacing: 0.25em;
+    @media #{media("<")} {
+      text-align: center;
+      letter-spacing: 0.05em;
+    }
   }
 
   &__sep {

@@ -2,6 +2,9 @@
   text-transform: uppercase;
   @include f-second;
   @include fsl(44px, 110%);
+  @media #{media("<")} {
+    @include fsl(32px);
+  }
 }
 
 .heading {

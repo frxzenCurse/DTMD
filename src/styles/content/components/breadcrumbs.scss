@@ -2,11 +2,10 @@
   $comp: &;
   margin-bottom: rem(20px);
   @media #{media("<")} {
-    margin-bottom: rem(16px);
-    padding: 0 rem(20px);
-    margin-left: rem(-20px);
+    padding: 0 rem(15px);
+    margin-left: rem(-15px);
 
-    width: calc(100% + #{rem(20px)} * 2);
+    width: calc(100% + #{rem(15px)} * 2);
     display: flex;
 
     overflow-y: scroll;
@@ -35,7 +34,7 @@
       padding-left: rem(10px);
       margin-left: rem(5px);
       @media #{media("<")} {
-        margin-left: rem(12px);
+        padding-left: rem(7px);
       }
 
       &::before {
@@ -47,6 +46,9 @@
         z-index: 1;
 
         @include fsl(14px);
+        @media #{media("<")} {
+          @include fsl(12px);
+        }
         color: color(black);
       }
     }
