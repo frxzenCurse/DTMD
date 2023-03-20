@@ -17,8 +17,32 @@ mixin footer
       ]
     .container
       .footer__inner 
-        .footer__row
-          .footer__col
+        .footer__desktop
+          .footer__row
+            .footer__col
+              .footer__item
+                a.footer__logo(href="#")
+                  +logo-svg.footer__logo-svg
+              .footer__item
+                .footer__text.footer__text--small 
+                  |Интернет-магазин мужской одежды DTMD.RU. © 2019-2023
+              .footer__item
+                a.footer__phone(href="tel:+79166506941")
+                  |+7 (916) 650-69-41 
+                .footer__text 
+                  |Заказы принимаются круглосуточно
+            .footer__col
+              each item in ddata
+                .footer__nav
+                  .footer__heading 
+                    |#{item.title}
+                  ul.footer__list
+                    each link in item.items 
+                      li.footer__list-item
+                        a.footer__list-link(href="#")
+                          |#{link} 
+        .footer__mobile
+          .footer__content 
             .footer__item
               a.footer__logo(href="#")
                 +logo-svg.footer__logo-svg
@@ -30,16 +54,15 @@ mixin footer
                 |+7 (916) 650-69-41 
               .footer__text 
                 |Заказы принимаются круглосуточно
-          .footer__col
+          .footer__accordions
             each item in ddata
-              .footer__nav
-                .footer__heading 
-                  |#{item.title}
-                ul.footer__list
-                  each link in item.items 
-                    li.footer__list-item
-                      a.footer__list-link(href="#")
-                        |#{link} 
+              .footer__accordion
+                +accordion.accordion--footer(title = item.title)
+                  ul.footer__list
+                    each link in item.items 
+                      li.footer__list-item
+                        a.footer__list-link(href="#")
+                          |#{link} 
       .footer__bot 
         .footer__bot-row 
           .footer__bot-col

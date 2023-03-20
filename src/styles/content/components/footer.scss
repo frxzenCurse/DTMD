@@ -1,9 +1,26 @@
 .footer {
+  @media #{media("<")} {
+    padding-bottom: rem(50px);
+  }
 
   border-top: 1px solid color(borders-alt);
 
+  &__desktop {
+    @media #{media("<")} {
+      display: none;
+    }
+  }
+  &__mobile {
+    @media #{media(">")} {
+      display: none;
+    }
+  }
+
   &__inner {
     padding: rem(60px) 0 rem(80px);
+    @media #{media("<")} {
+      padding: rem(40px) 0;
+    }
   }
 
   &__row {
@@ -51,6 +68,7 @@
 
   &__phone {
     margin-bottom: rem(5px);
+    display: block;
     @include fsl(22px, 140%);
   }
 
@@ -84,15 +102,36 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    @media #{media("<")} {
+      justify-content: center;
+      flex-direction: column;
+    }
+  }
+  &__bot-col {
+    &:not(:first-child) {
+      @media #{media("<")} {
+        margin-top: rem(24px);
+      }
+    }
   }
   &__bot-links {
     display: flex;
+    @media #{media("<")} {
+      display: block;
+    }
   }
   &__bot-item {
     display: flex;
+    @media #{media("<")} {
+      justify-content: center;
+    }
 
     &:not(:first-child) {
       margin-left: rem(20px);
+      @media #{media("<")} {
+        margin-left: 0;
+        margin-top: rem(20px);
+      }
     }
   }
   &__bot-link {
@@ -119,5 +158,21 @@
 
     display: inline-block;
     @include f-second;
+  }
+
+  &__content {
+    margin-bottom: rem(40px);
+
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
+    align-items: center;
+  }
+
+  &__accordion {
+
+    &:not(:first-child) {
+      margin-top: rem(40px);
+    }
   }
 }

@@ -16,4 +16,11 @@ document.addEventListener('DOMContentLoaded', () => {
       header.classList.add('header--scroll')
     }
   }
+
+  // menu
+  const menuBtn = header.querySelector('[data-header-btn]')
+
+  menuBtn.onclick = function() {
+    header.classList.toggle('header--menu')
+  }
 })

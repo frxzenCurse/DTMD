@@ -1,13 +1,33 @@
 .discount {
   padding: rem(14px) 0;
-  
+  @media #{media("<")} {
+    display: none;
+  }
   background-color: color(black);
   color: color(white);
+
+  &--mobile {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 888;
+
+    width: 100vw;
+    height: rem(50px);
+    
+    display: none;
+    @media #{media("<")} {
+      display: block;
+    }
+  }
 
   &__row {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    @media #{media("<")} {
+      justify-content: center;
+    }
   }
 
   &__text {

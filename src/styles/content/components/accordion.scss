@@ -4,6 +4,27 @@
 
   border-bottom: 1px solid color(gray-light);
 
+  &--footer {
+    padding-bottom: 0;
+    border-bottom: none;
+
+    #{$comp}__head {
+      padding-bottom: 0;
+    }
+    #{$comp}__body {
+      padding: rem(26px) 0 0;
+    }
+    #{$comp}__title {
+      text-transform: uppercase;
+      font-weight: 700;
+      @include fsl(16px);
+    }
+
+    #{$comp}__svg {
+      --size: #{rem(14px)};
+    }
+  }
+
   &.active {
     #{$comp}__title {
       font-weight: 800;

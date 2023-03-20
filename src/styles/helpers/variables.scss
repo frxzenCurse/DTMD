@@ -11,8 +11,8 @@ $breakpoints: (
   xl: 1680px,
   ll: 1440px,
   l: 1366px,
-  d: 1280px,
-  t: 1024px,
+  // d: 1280px,
+  d: 1024px,
   m: 768px,
   s: 576px,
   xs: 375px,
@@ -42,7 +42,7 @@ $col-count-m: 4;
 $col-count-t: 8;
 $col-count-d: 12;
 
-$col-pad-m: 20px;
+$col-pad-m: rem(15px);
 $col-pad-d: rem(165px);
 
 $col-gap-d: rem(30px);
