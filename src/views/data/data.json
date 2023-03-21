@@ -21,6 +21,14 @@
     {
       "href": "contacts",
       "title": "Контакты"
+    },
+    {
+      "href": "login",
+      "title": "Авторизация"
+    },
+    {
+      "href": "password",
+      "title": "Запрос пароля"
     }
   ]
 }

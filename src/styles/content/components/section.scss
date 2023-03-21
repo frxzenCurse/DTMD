@@ -2,6 +2,9 @@
 
   &--first {
     margin-top: rem(150px);
+    @media #{media("<")} {
+      margin-top: rem(100px);
+    }
   }
 
   &--about {

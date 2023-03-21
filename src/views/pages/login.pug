@@ -1,0 +1,38 @@
+extends ../app
+
+
+
+block content
+  .login-page
+    .login-page__bg 
+      +login-bg-svg.login-page__svg
+    section.section.section--first
+      .container
+        .login-page__container 
+          .login-page__content 
+            +breadcrumbs.breadcrumbs--auto(page = 'Авторизация')
+            h1.login-page__title 
+              |Авторизация
+          form.login-page__form(action="/")
+            .login-page__item
+              +input(type = 'email' label = 'Введите E-mail')
+            .login-page__item
+              +input(type = 'password' label = 'Пароль')
+            .login-page__item 
+              .login-page__inner 
+                .checkbox
+                  label.checkbox__label 
+                    input.checkbox__input(type="checkbox")
+                    .checkbox__box 
+                      +check-svg.checkbox__svg 
+                    .checkbox__text 
+                      |Запомнить меня
+                a.login-page__link(href="#")  
+                  |Забыли пароль?
+            .login-page__item 
+              +button.button--wide
+                |Войти
+            .login-page__item 
+              .login-page__link-wrapper
+                a.login-page__link(href="#")  
+                  |Зарегестрироваться

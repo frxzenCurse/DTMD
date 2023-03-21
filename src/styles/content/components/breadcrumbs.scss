@@ -6,13 +6,21 @@
     margin-left: rem(-15px);
 
     width: calc(100% + #{rem(15px)} * 2);
-    display: flex;
 
     overflow-y: scroll;
     @include scrollbar-hidden;
   }
 
   display: flex;
+
+  &--auto {
+    @media #{media("<")} {
+      padding: 0;
+      margin-left: 0;
+  
+      width: auto;
+    }
+  }
 
   &__list {
     display: flex;

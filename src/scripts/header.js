@@ -22,5 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   menuBtn.onclick = function() {
     header.classList.toggle('header--menu')
+    document.body.classList.toggle('body--hidden')
   }
 })

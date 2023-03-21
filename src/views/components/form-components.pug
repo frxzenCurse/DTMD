@@ -1,0 +1,6 @@
+
+mixin input
+  .input-wrapper 
+    .input-wrapper__label 
+      |#{attributes.label}
+    input.input(type=attributes.type value = attributes.value placeholder = attributes.placeholder required)

@@ -4,6 +4,7 @@
   }
 
   border-top: 1px solid color(borders-alt);
+  background-color: color(white);
 
   &__desktop {
     @media #{media("<")} {
