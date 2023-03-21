@@ -1,0 +1,43 @@
+.profile-page {
+  margin-bottom: rem(70px);
+  @media #{media("<")} {
+    margin-bottom: rem(60px);
+  }
+
+  &__offset {
+    padding-right: rem(35px);
+    @media #{media("<")} {
+      padding-right: 0;
+    }
+  }
+
+  &__wrapper {
+    margin-bottom: rem(20px);
+  }
+
+  &__btn {
+    margin-top: rem(20px);
+  }
+
+  &__form {
+    margin-top: rem(28px);
+    @media #{media("<")} {
+      margin-top: 0;
+    }
+  }
+
+  &__grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: rem(24px);
+    row-gap: rem(24px);
+    @media #{media("<", m)} {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__button {
+    margin-top: rem(24px);
+  }
+}

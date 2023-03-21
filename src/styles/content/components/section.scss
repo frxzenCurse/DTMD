@@ -13,6 +13,9 @@
 
   &__row {
     display: flex;
+    @media #{media("<")} {
+      display: block;
+    }
   }
 
   &__col {
@@ -21,6 +24,18 @@
     &:nth-child(1) {
       padding-right: $col-gap-d;
       width: calc(#{$col-part-d} * 3);
+      @media #{media("<")} {
+        padding-right: 0;
+        width: auto;
+      }
+    }
+
+    &:nth-child(2) {
+      @media #{media("<")} {
+        margin-top: rem(24px);
+        width: auto;
+      }
+      width: calc(#{$col-part-d} * 9);
     }
   }
 }

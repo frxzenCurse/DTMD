@@ -29,6 +29,14 @@
     {
       "href": "password",
       "title": "Запрос пароля"
+    },
+    {
+      "href": "register",
+      "title": "Регистрация"
+    },
+    {
+      "href": "profile-data",
+      "title": "Личные данные"
     }
   ]
 }

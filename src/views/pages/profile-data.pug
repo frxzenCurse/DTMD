@@ -1,0 +1,81 @@
+extends ../app
+
+
+
+block content
+  .profile-page
+    -
+      var ddata = [
+        {
+          label: "Имя",
+          type: "text"
+        },
+        {
+          label: "Фамилия",
+          type: "text"
+        },
+        {
+          label: "Введите E-mail",
+          type: "email"
+        },
+        {
+          label: "Телефон",
+          type: "phone"
+        },
+        {
+          label: "Страна",
+          type: "text"
+        },
+        {
+          label: "Город",
+          type: "text"
+        },
+        {
+          label: "Улица, дом",
+          type: "text"
+        },
+        {
+          label: "Почтовый индекс",
+          type: "text"
+        },
+      ]
+    section.section.section--first
+      .container
+        .only-mobile 
+          .profile-page__wrapper
+            +breadcrumbs(items = ['Личный кабинет'] page = 'Личные данные ')
+            h1.title.profile-page__title
+              |Личный кабинет
+            .profile-page__btn 
+              +link.button--wide 
+                |Вернуться в магазин
+        .section__row 
+          .section__col
+            .profile-page__offset
+              ul.nav 
+                each link, i in ['Мои заказы', 'Личные данные ', 'Рассылка', 'Выход', ]
+                  li.nav__item
+                    if (i === 1)
+                      .nav__link.active
+                        .nav__text 
+                          |#{link}
+                        .nav__icon 
+                          +arrow-svg.nav__svg
+                    else
+                      a.nav__link(href="#")
+                        .nav__text 
+                          |#{link}
+                        .nav__icon 
+                          +arrow-svg.nav__svg
+          .section__col
+            .only-desktop
+              +breadcrumbs(items = ['Личный кабинет'] page = 'Личные данные ')
+              h1.title.profile-page__title
+                |Личный кабинет
+            form.profile-page__form(action="/") 
+              .profile-page__grid
+                each item in ddata 
+                  +input(label = item.label type = item.type)
+              .profile-page__button
+                +button.button--wide 
+                  |Сохранить
