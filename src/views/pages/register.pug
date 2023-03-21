@@ -1,0 +1,76 @@
+extends ../app
+
+
+
+block content
+  .login-page
+    -
+      var ddata = [
+        {
+          label: "Имя",
+          type: "text"
+        },
+        {
+          label: "Фамилия",
+          type: "text"
+        },
+        {
+          label: "Введите E-mail",
+          type: "email"
+        },
+        {
+          label: "Телефон",
+          type: "phone"
+        },
+        {
+          label: "Пароль",
+          type: "password"
+        },
+        {
+          label: "Подтверждение пароля",
+          type: "password"
+        },
+        {
+          label: "Защита от автоматической регистрации",
+          type: "email"
+        },
+      ]
+    section.section.section--first
+      .container
+        .login-page__wrapper
+          .login-page__content 
+            +breadcrumbs.breadcrumbs--auto(page = 'Регистрация')
+            .title 
+              |Регистрация
+          form.login-page__form(action="/") 
+            .login-page__grid 
+              each item in ddata
+                .login-page__grid-item
+                  +input(label = item.label type = item.type)
+              .login-page__grid-item
+                .input-wrapper 
+                  .input-wrapper__label 
+                    |Введите код указанный на изображении
+                  .login-page__captcha
+                    |CAPTCHA
+            .login-page__item
+              ul.login-page__boxes 
+                li.login-page__boxes-item
+                  .checkbox.checkbox--small
+                    label.checkbox__label 
+                      input.checkbox__input(type="checkbox" checked)
+                      .checkbox__box 
+                        +check-svg.checkbox__svg 
+                      .checkbox__text 
+                        |Хочу получать информацию о новых коллекциях и акциях
+                li.login-page__boxes-item
+                  .checkbox.checkbox--small.checkbox--gray
+                    label.checkbox__label 
+                      input.checkbox__input(type="checkbox")
+                      .checkbox__box 
+                        +check-svg.checkbox__svg 
+                      .checkbox__text 
+                        |Соглашаюсь с #[a.checkbox__link(href="#")  правилами обработки персональных данных]
+            .login-page__item
+              +button.button--wide 
+                |Зарегистрироваться
