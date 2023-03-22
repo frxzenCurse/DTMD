@@ -91,7 +91,7 @@
     &:not(:first-child) {
       margin-left: rem(43px);
       @media #{media("<")} {
-        margin-left: rem(30px);
+        margin-left: rem(20px);
       }
     }
 

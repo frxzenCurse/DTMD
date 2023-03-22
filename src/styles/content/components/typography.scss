@@ -11,4 +11,7 @@
   @include f-second;
   text-transform: uppercase;
   @include fsl(28px, 120%);
+  @media #{media("<")} {
+    @include fsl(20px);
+  }
 }

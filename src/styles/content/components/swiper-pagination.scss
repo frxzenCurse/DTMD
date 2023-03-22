@@ -15,15 +15,14 @@
       margin-left: rem(15px) !important;
       margin-right: 0 !important;
       @media #{media("<")} {
-        margin-left: rem(15px) !important;
+        margin-left: rem(9px) !important;
       }
 
       width: rem(36px);
       height: 1px;
-      // height: rem(34px);
-      // @media #{media("<")} {
-      //   height: rem(20px);
-      // }
+      @media #{media("<")} {
+        width: rem(22px);
+      }
 
       border-radius: 0;
       background: color(gray-alt);

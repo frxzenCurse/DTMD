@@ -11,10 +11,26 @@
     position: relative;
     z-index: 0;
     padding: 0 rem(165px);
+    @media #{media("<")} {
+      padding: 0 rem(15px);
 
+      overflow: hidden;
+    }
     height: 100vh;
+    @media #{media("<")} {
+      height: rem(800px);
+    }
+    @media #{media("<", m)} {
+      height: 100vh;
+    }
   }
   &__intro-content {
+    position: relative;
+    z-index: 1;
+    @media #{media("<")} {
+      padding-top: rem(165px);
+      height: auto;
+    }
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -22,19 +38,27 @@
   }
   &__intro-title {
     margin-bottom: rem(32px);
-
+    @media #{media("<")} {
+      max-width: none;
+    }
     max-width: rem(540px);
   }
   &__intro-text {
     margin-bottom: rem(32px);
 
     max-width: rem(485px);
-
+    @media #{media("<", m)} {
+      max-width: rem(314px);
+      @include fsl(12px);
+    }
     @include fsl(14px, 140%);
   }
   &__intro-button {
     display: flex;
     width: calc(#{$col-part-d} * 2);
+    @media #{media("<")} {
+      width: rem(140px);
+    }
   }
   &__intro-bg {
     position: absolute;
@@ -50,12 +74,28 @@
   &__intro-svg {
     width: auto;
     height: 100%;
+    @media #{media("<")} {
+      display: none;
+    }
+
+    &.mobile {
+      display: none;
+      @media #{media("<")} {
+        display: block;
+      }
+    }
   }
   &__intro-image {
     position: absolute;
     z-index: 1;
     right: rem(45px);
     bottom: 0;
+    @media #{media("<")} {
+      right: 0;
+    }
+    @media #{media("<", m)} {
+      right: rem(-70px);
+    }
 
     display: flex;
     align-items: center;
@@ -63,7 +103,15 @@
   &__intro-img {
     width: rem(678px);
     height: rem(609px);
-
+    @media #{media("<")} {
+      width: rem(500px);
+      height: rem(460px);
+      object-position: top center;
+    }
+    @media #{media("<", m)} {
+      width: rem(338px);
+      height: rem(259px);
+    }
     object-fit: cover;
   }
   &__intro-pagination {
@@ -71,19 +119,27 @@
     bottom: rem(66px);
     left: rem(165px);
     z-index: 2;
+    @media #{media("<")} {
+      left: rem(15px);
+      bottom: rem(37px);
+    }
 
     display: flex;
     align-items: center;
   }
   &__intro-fraction {
     margin-right: rem(23px);
-
+    @media #{media("<")} {
+      display: none;
+    }
     font-weight: 700;
     @include fsl(14px, 140%);
   }
   &__intro-btn {
     margin-left: rem(31px);
-
+    @media #{media("<")} {
+      margin-left: rem(15px);
+    }
     display: flex;
     align-items: center;
     justify-content: center;
@@ -102,7 +158,10 @@
   }
   &__features-heading {
     margin-bottom: rem(65px);
-
+    @media #{media("<")} {
+      margin-bottom: rem(32px);
+      max-width: none;
+    }
     max-width: rem(950px);
   }
   &__features-list {
@@ -110,11 +169,26 @@
     grid-template-columns: rem(287px) rem(287px) rem(300px);
     column-gap: rem(93px);
     row-gap: rem(40px);
+    @media #{media("<")} {
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: rem(20px);
+    }
+    @media #{media("<", m)} {
+      grid-template-columns: 1fr;
+      row-gap: rem(60px);
+    }
   }
-  &__features-item {}
+  &__features-item {
+    @media #{media("<", m)} {
+      display: flex;
+    }
+  }
   &__features-icon {
     margin-bottom: rem(36px);
-
+    @media #{media("<", m)} {
+      margin-bottom: 0;
+      margin-right: rem(20px);
+    }
     display: flex;
     justify-content: flex-start;
     align-content: center;
@@ -129,6 +203,9 @@
 
   &__catalog {
     margin-top: rem(130px);
+    @media #{media("<")} {
+      margin-top: rem(90px);
+    }
   }
   &__catalog-top {
     margin-bottom: rem(32px);
@@ -137,28 +214,61 @@
     justify-content: space-between;
     align-items: center;
   }
-  &__catalog-btn {}
+  &__catalog-btn {
+    @media #{media("<")} {
+      margin-top: rem(32px);
+    }
+  }
   &__catalog-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: rem(30px);
+    @media #{media("<")} {
+      gap: rem(15px);
+    }
+    @media #{media("<", m)} {
+      grid-template-columns: repeat(2, 1fr);
+      gap: rem(6px);
+      .card {
+        &:nth-child(3),
+        &:nth-child(4) {
+          display: none;
+        }
+      }
+    }
   }
 
   &__new {
     margin-top: rem(170px);
     margin-bottom: rem(153px);
+    @media #{media("<")} {
+      margin: rem(90px) 0;
+    }
   }
   &__new-row {
     display: flex;
     align-items: center;
+    @media #{media("<")} {
+      display: block;
+    }
   }
   &__new-col {
     &:nth-child(1) {
       flex-shrink: 0;
       width: calc(#{$col-part-d} * 5 - #{$col-gap-d});
+      @media #{media("<")} {
+        width: 50%;
+      }
+      @media #{media("<", m)} {
+        width: 100%;
+      }
     }
     &:nth-child(2) {
       margin-left: rem(70px);
+      @media #{media("<")} {
+        margin-left: 0;
+        margin-top: rem(32px);
+      }
     }
   }
   &__new-img {
@@ -170,21 +280,32 @@
   }
   &__new-heading {
     margin-bottom: rem(43px);
-
+    @media #{media("<")} {
+      margin-bottom: rem(20px);
+      max-width: none;
+    }
     max-width: rem(433px);
   }
   &__new-text {
     @include fsl(14px, 150%);
+    @media #{media("<")} {
+      @include fsl(12px);
+    }
 
     p {
       &:not(:first-child) {
         margin-top: rem(20px);
+        @media #{media("<")} {
+          margin-top: rem(15px);
+        }
       }
     }
   }
   &__new-btn {
     margin-top: rem(43px);
-
+    @media #{media("<")} {
+      margin-top: rem(20px);
+    }
     display: flex;
   }
 }

@@ -25,6 +25,7 @@ block content
                         |Подробнее
                   .main-page__intro-bg 
                     +intro-bg-svg.main-page__intro-svg 
+                    +intro-bg-mobile-svg.main-page__intro-svg.mobile
                   .main-page__intro-image
                     img.main-page__intro-img(src="assets/images/intro-slide.png", alt="")
       .main-page__intro-pagination
@@ -58,14 +59,19 @@ block content
         .main-page__catalog-top   
           h3.heading 
             |новая коллекция: весна 2023
-          .main-page__catalog-btn 
-            +link
-              |Перейти в каталог
+          .only-desktop
+            .main-page__catalog-btn 
+              +link
+                |Перейти в каталог
         .main-page__catalog-grid 
           +card(img = 'product-1')
           +card(img = 'product-2')
           +card(img = 'product-3' discount = true isActive = true)
           +card(img = 'product-1')
+        .only-mobile
+          .main-page__catalog-btn 
+            +link
+              |Перейти в каталог
     section.main-page__new
       .container 
         .main-page__new-row 
