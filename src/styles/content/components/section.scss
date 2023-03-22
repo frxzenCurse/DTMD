@@ -1,4 +1,5 @@
 .section {
+  $comp: &;
 
   &--first {
     margin-top: rem(150px);
@@ -9,12 +10,26 @@
 
   &--about {
     margin-top: rem(80px);
+    @media #{media("<")} {
+      margin-top: rem(50px);
+    }
   }
 
   &__row {
     display: flex;
     @media #{media("<")} {
       display: block;
+    }
+
+    &--alt {
+
+      #{$comp}__col {
+        &:nth-child(1) {
+          @media #{media("<")} {
+            display: none;
+          }
+        }
+      }
     }
   }
 

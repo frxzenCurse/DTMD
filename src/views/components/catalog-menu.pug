@@ -1,0 +1,28 @@
+mixin catalog-menu 
+  .catalog-menu(data-filters-menu='')
+    .catalog-menu__top 
+      .catalog-menu__icon(data-filters-button='')
+        +big-arrow-svg.catalog-menu__svg 
+      .catalog-menu__title 
+        |категории
+    .catalog-menu__container
+      ul.catalog-menu__list 
+        each item in ['Верхняя одежда', 'Пиджаки', 'Жилеты', 'Брюки', 'Джемперы', ]
+          li.catalog-menu__item(data-accordion='')
+            .catalog-menu__button(data-accordion-button='')
+              .catalog-menu__text 
+                |#{item}
+              .catalog-menu__button-icon  
+                +arrow-svg.catalog-menu__button-svg
+            .catalog-menu__dropdown(data-accordion-dropdown='')
+              ul.catalog-menu__links 
+                each link in ['Пальто', 'Куртки', 'Ветровки', 'Плащи',]
+                  li.catalog-menu__links-item 
+                    a.catalog-menu__link(href="#")
+                      .catalog-menu__link-text 
+                        |#{link}
+                      .catalog-menu__button-icon  
+                        +arrow-svg.catalog-menu__button-svg
+    .catalog-menu__btn
+      +button.button--wide(data-filters-button='')
+        |Показать товаров: #[span 324]

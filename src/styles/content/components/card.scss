@@ -13,6 +13,9 @@
     z-index: 1;
     top: rem(12px);
     left: rem(12px);
+    @media #{media("<")} {
+      top: rem(10px);
+    }
     padding: rem(5px) rem(8px);
 
     background-color: color(white-alt);
@@ -22,6 +25,9 @@
 
   &__image {
     height: rem(317px);
+    @media #{media("<")} {
+      height: rem(223px);
+    }
     display: flex;
     align-items: center;
   }
@@ -38,6 +44,9 @@
     top: rem(15px);
     right: rem(15px);
     z-index: 1;
+    @media #{media("<")} {
+      top: rem(10px);
+    }
 
     display: flex;
     align-items: center;
@@ -60,15 +69,32 @@
 
   &__title {
     margin-top: rem(22px);
+    @media #{media("<")} {
+      padding-left: rem(10px);
+      margin-top: rem(20px);
 
+      @include fsl(12px, 130%);
+    }
     font-weight: 700;
     text-transform: uppercase;
   }
 
   &__text {
     margin-top: rem(10px);
-
+    @media #{media("<")} {
+      padding-left: rem(10px);
+      @include fsl(12px);
+    }
     color: color(gray);
     font-weight: 700;
+  }
+
+  &__old {
+    margin-left: rem(5px);
+
+    display: inline-block;
+    
+    font-weight: 400;
+    text-decoration: line-through;
   }
 }

@@ -31,8 +31,6 @@ html {
   //   font-size: getVw($fs, 1920px / 100);
   // }
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-
-  @include styled-scrollbar;
 }
 
 body {

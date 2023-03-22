@@ -2,7 +2,9 @@
   position: relative;
   z-index: 0;
   margin-bottom: rem(80px);
-
+  @media #{media("<")} {
+    margin-bottom: rem(60px);
+  }
   overflow: hidden;
 
   &__icon {
@@ -15,6 +17,22 @@
     flex-shrink: 0;
     width: 111%;
     height: auto;
+    @media #{media("<", m)} {
+      display: none;
+    }
+
+    &.mobile {
+      display: none;
+      @media #{media("<", m)} {
+        margin: 0 auto;
+        display: block;
+        width: 80%;
+      }
+      @media #{media("<", s)} {
+        margin-left: -4.4%;
+        width: 111%;
+      }
+    }
   }
 
   &__content {
@@ -28,7 +46,10 @@
 
   &__title {
     max-width: rem(1022px);
-
+    @media #{media("<")} {
+      max-width: none;
+      @include fsl(24px);
+    }
     @include f-second;
     text-transform: uppercase;
     @include fsl(48px, 120%);
@@ -36,14 +57,21 @@
 
   &__wrapper {
     margin-top: rem(-16px);
-
+    @media #{media("<")} {
+      margin-top: rem(30px);
+    }
     display: flex;
     justify-content: flex-end;
   }
 
   &__text {
     max-width: rem(634px);
-
+    @media #{media("<")} {
+      @include fsl(12px);
+    }
+    @media #{media("<", m)} {
+      max-width: rem(250px);
+    }
     @include fsl(14px, 140%);
   }
 }

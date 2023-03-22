@@ -1,0 +1,148 @@
+.catalog-menu {
+  $comp: &;
+  position: fixed;
+  z-index: 889;
+  top: 0;
+  right: 0;
+
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  transition: $transition;
+  transform: translateX(100%);
+  background-color: color(white);
+
+  &.active {
+    transform: none;
+  }
+
+  &__top {
+    padding: rem(24px) rem(15px) rem(20px);
+    
+    display: flex;
+    align-items: center;
+
+    border-bottom: 1px solid color(gray-light);
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__svg {
+    --size: #{rem(20px)};
+
+    width: var(--size);
+    height: var(--size);
+  }
+
+  &__title {
+    width: 100%;
+
+    text-align: center;
+    text-transform: uppercase;
+    @include f-second;
+    @include fsl(20px, 120%);
+  }
+
+  &__container {
+    padding: rem(30px) rem(15px) rem(15px);
+
+    overflow-y: auto;
+    @include styled-scrollbar;
+  }
+
+  &__item {
+
+    &:not(:first-child) {
+      margin-top: rem(20px);
+    }
+
+    &:last-child {
+      #{$comp}__button {
+        padding-bottom: 0;
+
+        border-bottom: none;
+      }
+    }
+
+    &.active {
+
+      #{$comp}__button {
+        border-color: color(black);
+
+        #{$comp}__text {
+          font-weight: 700;
+        }
+
+        #{$comp}__button-icon {
+          transform: rotate(90deg);
+        }
+      }
+    }
+  }
+
+  &__button {
+    padding-bottom: rem(25px);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: 1px solid color(gray-light);
+    transition: $transition;
+  }
+  &__button-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: $transition;
+  }
+  &__button-svg {
+    --size: #{rem(10px)};
+
+    width: var(--size);
+    height: var(--size);
+  }
+
+  &__dropdown {
+    display: none;
+  }
+
+  &__text {
+    font-weight: 600;
+    @include fsl(14px, 120%);
+    transition: $transition;
+  }
+
+  &__links {
+    padding: rem(24px) rem(20px);
+
+    background-color: #F1F1F1;
+  }
+  &__links-item {
+
+    &:not(:first-child) {
+      margin-top: rem(20px);
+    }
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__link-text {
+    @include fsl(14px, 120%);
+    font-weight: 500;
+  }
+
+  &__btn {
+    padding: rem(15px) rem(15px) rem(22px);
+  }
+}

@@ -11,8 +11,8 @@ $breakpoints: (
   xl: 1680px,
   ll: 1440px,
   l: 1366px,
-  // d: 1280px,
-  d: 1024px,
+  d: 1280px,
+  // d: 1024px,
   m: 768px,
   s: 576px,
   xs: 375px,
@@ -69,6 +69,7 @@ $colors: (
   gray-second: #ADADAD,
   gray-alt: #D9D9D9,
   gray-light: #F5F5F5,
+  gray-light-alt: #EAEAEA,
 );
 @function color($variant: black) {
   @return map.get($colors, $variant);
