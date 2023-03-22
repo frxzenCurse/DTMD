@@ -790,16 +790,119 @@
 				</div>
 			</header>
 			<main class="main">
-				<div class="card-page">
+				<div class="profile-page">
 					<section class="section section--first">
 						<div class="container">
-							<div class="breadcrumbs">
-								<ul class="breadcrumbs__list">
-									<li class="breadcrumbs__item"><a class="breadcrumbs__link" href="#">Главная</a></li>
-									<li class="breadcrumbs__item">
-										<div class="breadcrumbs__text"></div>
-									</li>
-								</ul>
+							<div class="only-mobile">
+								<div class="profile-page__wrapper">
+									<div class="breadcrumbs">
+										<ul class="breadcrumbs__list">
+											<li class="breadcrumbs__item"><a class="breadcrumbs__link" href="#">Главная</a></li>
+											<li class="breadcrumbs__item"><a class="breadcrumbs__link" href="#">Личный кабинет</a></li>
+											<li class="breadcrumbs__item">
+												<div class="breadcrumbs__text">Рассылка</div>
+											</li>
+										</ul>
+									</div>
+									<h1 class="title profile-page__title">Подписаться на рассылку</h1>
+									<div class="profile-page__btn"><a class="button button--wide" href="#">Вернуться в магазин</a></div>
+								</div>
+							</div>
+							<div class="section__row">
+								<div class="section__col">
+									<div class="profile-page__offset">
+										<ul class="nav">
+											<li class="nav__item"><a class="nav__link" href="#">
+													<div class="nav__text">Мои заказы</div>
+													<div class="nav__icon"><svg class="nav__svg" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+															<g clip-path="url(#clip0_48_138)">
+																<path d="M6.1665 12.3333L10.4998 8.00001L6.1665 3.66667" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+															</g>
+															<defs>
+																<clippath id="clip0_48_138">
+																	<rect width="16" height="16" fill="white"></rect>
+																</clippath>
+															</defs>
+														</svg></div>
+												</a></li>
+											<li class="nav__item"><a class="nav__link" href="#">
+													<div class="nav__text">Личные данные</div>
+													<div class="nav__icon"><svg class="nav__svg" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+															<g clip-path="url(#clip0_48_138)">
+																<path d="M6.1665 12.3333L10.4998 8.00001L6.1665 3.66667" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+															</g>
+															<defs>
+																<clippath id="clip0_48_138">
+																	<rect width="16" height="16" fill="white"></rect>
+																</clippath>
+															</defs>
+														</svg></div>
+												</a></li>
+											<li class="nav__item">
+												<div class="nav__link active">
+													<div class="nav__text">Рассылка</div>
+													<div class="nav__icon"><svg class="nav__svg" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+															<g clip-path="url(#clip0_48_138)">
+																<path d="M6.1665 12.3333L10.4998 8.00001L6.1665 3.66667" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+															</g>
+															<defs>
+																<clippath id="clip0_48_138">
+																	<rect width="16" height="16" fill="white"></rect>
+																</clippath>
+															</defs>
+														</svg></div>
+												</div>
+											</li>
+											<li class="nav__item"><a class="nav__link" href="#">
+													<div class="nav__text">Выход</div>
+													<div class="nav__icon"><svg class="nav__svg" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+															<g clip-path="url(#clip0_48_138)">
+																<path d="M6.1665 12.3333L10.4998 8.00001L6.1665 3.66667" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+															</g>
+															<defs>
+																<clippath id="clip0_48_138">
+																	<rect width="16" height="16" fill="white"></rect>
+																</clippath>
+															</defs>
+														</svg></div>
+												</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="section__col">
+									<div class="only-desktop">
+										<div class="breadcrumbs">
+											<ul class="breadcrumbs__list">
+												<li class="breadcrumbs__item"><a class="breadcrumbs__link" href="#">Главная</a></li>
+												<li class="breadcrumbs__item"><a class="breadcrumbs__link" href="#">Личный кабинет</a></li>
+												<li class="breadcrumbs__item">
+													<div class="breadcrumbs__text">Рассылка</div>
+												</li>
+											</ul>
+										</div>
+										<h1 class="title profile-page__title">Подписаться на рассылку</h1>
+									</div>
+									<form class="profile-page__form" action="/">
+										<div class="profile-page__grid">
+											<div class="input-wrapper">
+												<div class="input-wrapper__label">E-mail</div><input class="input" type="email" required="required" />
+											</div>
+											<div class="input-wrapper">
+												<div class="input-wrapper__label">Рассылка</div>
+												<div class="profile-page__checkbox">
+													<div class="checkbox"><label class="checkbox__label"><input class="checkbox__input" type="checkbox" checked="checked">
+															<div class="checkbox__box"><svg class="checkbox__svg" width="8" height="6" viewBox="0 0 8 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+																	<path d="M0.571289 2.74598L3.02027 5.28566L7.42843 0.714233" stroke="white" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"></path>
+																</svg></div>
+															<div class="checkbox__text">Новости магазина</div>
+														</label></div>
+												</div>
+											</div>
+										</div>
+										<div class="profile-page__caption">Для того чтобы отписаться от получения рассылки, снимите флажки с выбранных категорий и нажмите кнопку “Изменить подписку”</div>
+										<div class="profile-page__button"><button class="button button--wide">Изменить подписку</button></div>
+									</form>
+								</div>
 							</div>
 						</div>
 					</section>
