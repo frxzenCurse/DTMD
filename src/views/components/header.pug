@@ -2,13 +2,18 @@ mixin header
   header.header&attributes(attributes)
     .discount
       .container
-        .discount__row 
-          .discount__col
+        .only-mobile
+          .discount__row 
             .discount__text 
-              |-15 % на все новинки по промокоду “SALE15” #[span.discount__sep |] Действует до 30.04.23
-          .discount__col
-            a.discount__caption(href="#") 
-              |ПОДРОБНЕЕ
+              |-15 % на все новинки по промокоду #[br] “SALE15” Действует до 30.04.23
+        .only-desktop
+          .discount__row 
+            .discount__col
+              .discount__text 
+                |-15 % на все новинки по промокоду “SALE15” #[span.discount__sep |] Действует до 30.04.23
+            .discount__col
+              a.discount__caption(href="#") 
+                |ПОДРОБНЕЕ
     .header__inner
       .container
         .header__row 
@@ -63,9 +68,15 @@ mixin header
               .header-menu__dropdown(data-accordion-dropdown='')
                 ul.header-menu__links 
                   each link in ['Верхняя одежда', 'Пиджаки', 'Жилеты', 'Брюки', 'Джемперы', 'Футболки и поло']
-                    li.header-menu__links-item
-                      a.header-menu__link(href="#") 
+                    li.header-menu__links-item(data-accordion='')
+                      .header-menu__link(data-accordion-button='')
                         .header-menu__text 
                           |#{link}
                         .header-menu__icon 
                           +arrow-svg.header-menu__svg
+                      .header-menu__links-dropdown(data-accordion-dropdown='')
+                        ul.header-menu__items
+                          each text in ['Пальто', 'Куртки', 'Ветровки', 'Плащи'] 
+                            li.header-menu__items-item 
+                              a.header-menu__items-link(href="#")
+                                |#{text}

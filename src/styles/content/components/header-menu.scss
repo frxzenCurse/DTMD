@@ -63,6 +63,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    transition: $transition;
   }
 
   &__svg {
@@ -88,6 +90,22 @@
     &:not(:first-child) {
       margin-top: rem(30px);
     }
+
+    &.active {
+      #{$comp}__text {
+        font-weight: 700;
+      }
+      #{$comp}__icon {
+        transform: rotate(90deg);
+      }
+    }
+  }
+  &__links-dropdown {
+    padding: rem(20px) 0 rem(24px);
+
+    display: none;
+
+    border-bottom: 1px solid rgba(color(black), 0.06);
   }
 
   &__link {
@@ -95,8 +113,22 @@
     justify-content: space-between;
     align-items: center;
 
+    cursor: pointer;
+
     #{$comp}__text {
       font-weight: 500;
     }
+  }
+
+  &__items {}
+  &__items-item {
+    display: flex;
+
+    &:not(:first-child) {
+      margin-top: rem(20px);
+    }
+  }
+  &__items-link {
+    @include fsl(14px, 110%);
   }
 }
