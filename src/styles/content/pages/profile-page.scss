@@ -4,6 +4,14 @@
     margin-bottom: rem(60px);
   }
 
+  &__title {
+    @media #{media(">")} {
+      padding-bottom: rem(30px);
+      
+      border-bottom: 1px solid #F1F1F1;
+    }
+  }
+
   &__offset {
     padding-right: rem(35px);
     @media #{media("<")} {
@@ -39,5 +47,17 @@
 
   &__button {
     margin-top: rem(24px);
+  }
+
+  &__caption {
+    margin-top: rem(42px);
+
+    font-weight: 500;
+    color: color(gray);
+    @include fsl(14px, 160%);
+  }
+
+  &__checkbox {
+    margin-top: rem(27px);
   }
 }

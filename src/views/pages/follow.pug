@@ -1,0 +1,58 @@
+extends ../app
+
+
+
+block content
+  .profile-page
+    section.section.section--first
+      .container
+        .only-mobile 
+          .profile-page__wrapper
+            +breadcrumbs(items = ['Личный кабинет'] page = 'Рассылка')
+            h1.title.profile-page__title
+              |Подписаться на рассылку
+            .profile-page__btn 
+              +link.button--wide 
+                |Вернуться в магазин
+        .section__row 
+          .section__col
+            .profile-page__offset
+              ul.nav 
+                each link, i in ['Мои заказы', 'Личные данные ', 'Рассылка', 'Выход', ]
+                  li.nav__item
+                    if (i === 2)
+                      .nav__link.active
+                        .nav__text 
+                          |#{link}
+                        .nav__icon 
+                          +arrow-svg.nav__svg
+                    else
+                      a.nav__link(href="#")
+                        .nav__text 
+                          |#{link}
+                        .nav__icon 
+                          +arrow-svg.nav__svg
+          .section__col
+            .only-desktop
+              +breadcrumbs(items = ['Личный кабинет'] page = 'Рассылка')
+              h1.title.profile-page__title
+                |Подписаться на рассылку
+            form.profile-page__form(action="/") 
+              .profile-page__grid
+                +input(label = 'E-mail' type = 'email')
+                .input-wrapper 
+                  .input-wrapper__label 
+                    |Рассылка
+                  .profile-page__checkbox 
+                    .checkbox
+                      label.checkbox__label 
+                        input.checkbox__input(type="checkbox" checked)
+                        .checkbox__box 
+                          +check-svg.checkbox__svg 
+                        .checkbox__text 
+                          |Новости магазина
+              .profile-page__caption 
+                |Для того чтобы отписаться от получения рассылки, снимите флажки с выбранных категорий и нажмите кнопку “Изменить подписку”
+              .profile-page__button
+                +button.button--wide 
+                  |Изменить подписку
