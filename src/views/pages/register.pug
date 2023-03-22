@@ -42,7 +42,13 @@ block content
             .login-page__grid 
               each item in ddata
                 .login-page__grid-item
-                  +input(label = item.label type = item.type)
+                  if (item.type === 'phone')
+                    .input-wrapper 
+                      .input-wrapper__label 
+                        |#{item.label}
+                      input.input(type=item.type required data-mask-phone='')
+                  else
+                    +input(label = item.label type = item.type)
               .login-page__grid-item
                 .input-wrapper 
                   .input-wrapper__label 

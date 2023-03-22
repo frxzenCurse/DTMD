@@ -133,33 +133,34 @@
     font-weight: 700;
     @include fsl(14px, 140%);
   }
-  &__return-list {}
-  &__return-item {
-    padding-left: rem(20px);
-    position: relative;
-    z-index: 0;
+  &__return-list {
+    li {
+      padding-left: rem(20px);
+      position: relative;
+      z-index: 0;
 
-    @include fsl(14px, 140%);
+      @include fsl(14px, 140%);
 
-    &::before {
-      --size: #{rem(5px)};
-      content: "";
-      position: absolute;
-      top: rem(7px);
-      left: rem(5px);
-      z-index: 1;
+      &::before {
+        --size: #{rem(5px)};
+        content: "";
+        position: absolute;
+        top: rem(7px);
+        left: rem(5px);
+        z-index: 1;
 
-      width: var(--size);
-      height: var(--size);
+        width: var(--size);
+        height: var(--size);
 
-      border-radius: 50%;
-      background-color: color(black);
-    }
+        border-radius: 50%;
+        background-color: color(black);
+      }
 
-    &:not(:first-child) {
-      margin-top: rem(25px);
-      @media #{media("<", m)} {
-        margin-top: rem(20px);
+      &:not(:first-child) {
+        margin-top: rem(25px);
+        @media #{media("<", m)} {
+          margin-top: rem(20px);
+        }
       }
     }
   }

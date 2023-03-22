@@ -75,7 +75,13 @@ block content
             form.profile-page__form(action="/") 
               .profile-page__grid
                 each item in ddata 
-                  +input(label = item.label type = item.type)
+                  if (item.type === 'phone')
+                    .input-wrapper 
+                      .input-wrapper__label 
+                        |#{item.label}
+                      input.input(type=item.type required data-mask-phone='')
+                  else
+                    +input(label = item.label type = item.type)
               .profile-page__button
                 +button.button--wide 
                   |Сохранить
