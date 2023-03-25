@@ -1,0 +1,38 @@
+.counter {
+  padding: rem(15px);
+
+  min-width: rem(140px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  border: 1px solid color(borders);
+
+  &__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+    background: none;
+    border: none;
+    transition: $transition;
+
+    &.disabled {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+  }
+
+  &__svg {
+    --size: #{rem(14px)};
+
+    width: var(--size);
+    height: var(--size);
+  }
+
+  &__number {
+    font-weight: 500;
+    @include fsl(14px);
+  }
+}

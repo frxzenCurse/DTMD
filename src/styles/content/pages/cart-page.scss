@@ -1,3 +1,220 @@
 .cart-page {
+  margin-bottom: rem(60px);
+  @media #{media("<")} {
+    margin-bottom: rem(40px);
+  }
   
+  &__row {
+    margin-top: rem(30px);
+    
+    display: flex;
+    @media #{media("<")} {
+      margin-top: rem(20px);
+      display: block;
+    }
+  }
+
+  &__col {
+    flex-shrink: 0;
+
+    &:nth-child(1) {
+      width: calc(#{$col-part-d} * 9 - #{$col-gap-d});
+      @media #{media("<")} {
+        width: auto;
+      }
+    }
+    &:nth-child(2) {
+      margin-left: $col-gap-d;
+      width: calc(#{$col-part-d} * 3 - #{$col-gap-d});
+      @media #{media("<")} {
+        margin-left: 0;
+        width: auto;
+      }
+    }
+  }
+
+  &__product {
+    padding: rem(24px);
+    @media #{media("<")} {
+      padding: rem(19px);
+    }
+
+    border: 1px solid color(borders-third);
+
+    &:not(:first-child) {
+      border-top: none;
+    }
+  }
+  &__product-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @media #{media("<")} {
+      display: block;
+    }
+  }
+  &__product-col {
+    display: flex;
+    align-items: center;
+
+    &:nth-child(2) {
+      @media #{media("<")} {
+        display: none;
+      }
+    }
+  }
+  &__product-img {
+    margin-right: rem(28px);
+
+    flex-shrink: 0;
+    width: rem(82px);
+    display: flex;
+    align-items: center;
+    @media #{media("<")} {
+      margin-right: rem(24px);
+      width: 40%;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  &__product-content {}
+  &__product-name {
+    font-weight: 700;
+    @include fsl(16px, 130%);
+    text-transform: uppercase;
+    @media #{media("<")} {
+      @include fsl(14px);
+    }
+  }
+  &__product-item {
+
+    &:not(:first-child) {
+      margin-top: rem(10px);
+      @media #{media("<")} {
+        margin-top: rem(15px);
+      }
+    }
+
+    &.mobile {
+      @media #{media(">")} {
+        display: none;
+      }
+    }
+  }
+  &__product-text {
+    color: color(gray);
+    @media #{media("<")} {
+      color: color(black);
+      font-weight: 500;
+      @include fsl(12px, 120%);
+
+      span {
+        font-weight: 700;
+      }
+    }
+  }
+  &__product-counter {
+    margin-right: rem(50px);
+  }
+  &__product-price {
+    margin-right: rem(30px);
+    font-weight: 700;
+  }
+  &__product-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    cursor: pointer;
+  }
+  &__product-svg {
+    --size: #{rem(24px)};
+
+    width: var(--size);
+    height: var(--size);
+  }
+
+  &__buttons {
+    margin-top: rem(24px);
+
+    display: flex;
+    justify-content: space-between;
+    @media #{media("<")} {
+      display: none;
+    }
+  }
+
+  &__card {
+    border: 1px solid color(borders-third);
+  }
+  &__card-top {
+    padding: rem(25px) rem(28px);
+
+    @include f-second;
+    border-bottom: 1px solid color(borders-third);
+  }
+  &__card-body {
+    padding: rem(28px);
+    @media #{media("<")} {
+      padding: rem(28px) rem(28px) rem(22px);
+    }
+  }
+  &__card-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @include fsl(14px, 140%);
+    
+    &:not(:first-child) {
+      margin-top: rem(25px);
+    }
+  }
+  &__card-btn {
+    margin-top: rem(22px);
+  }
+  &__card-label {
+    font-weight: 500;
+  }
+  &__card-text {
+    font-weight: 700;
+  }
+  &__card-bot {
+    margin-top: rem(25px);
+    padding-top: rem(25px);
+
+    border-top: 1px dashed rgba(color(black), 0.1);
+  }
+  
+  &__promo {
+    padding: rem(28px);
+    @media #{media("<")} {
+      padding: rem(17px) rem(28px);
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    background-color: color(gray-bg);
+  }
+  &__promo-title {
+    margin-bottom: rem(19px);
+    @media #{media("<")} {
+      margin-bottom: 0;
+      @include fsl(12px);
+    }
+    font-weight: 700;
+  }
+  &__promo-form {}
+  &__promo-btn {
+    margin-top: rem(16px);
+  }
+  &__promo-link {
+    font-weight: 500;
+    @include fsl(12px);
+  }
 }

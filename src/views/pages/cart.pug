@@ -4,8 +4,104 @@ extends ../app
 
 block content
   .cart-page
-    section.delivery-page__steps 
+    section.section.section--first
       .container 
         +breadcrumbs(page = 'Корзина')
         h1.title 
           |Корзина
+        .cart-page__row 
+          .cart-page__col
+            .cart-page__products
+              - for (i = 0; i < 2; i++)
+                .cart-page__product
+                  .cart-page__product-row 
+                    .cart-page__product-col
+                      .cart-page__product-img 
+                        img(src="assets/images/product-1.jpg", alt="")
+                      .cart-page__product-content 
+                        .cart-page__product-name 
+                          |Водолазка DU-1 White (L)
+                        .cart-page__product-item 
+                          .cart-page__product-text 
+                            |Размер #[span L]
+                        .cart-page__product-item.mobile 
+                          .cart-page__product-text 
+                            |Количество: #[span 1 шт.]
+                        .cart-page__product-item.mobile 
+                          .cart-page__product-text 
+                            |Цена: #[span 7 800 руб.]
+                    .cart-page__product-col
+                      .cart-page__product-counter 
+                        .counter(data-counter='1')
+                          button.counter__btn(data-count-minus='')
+                            +minus-svg.counter__svg 
+                          .counter__number(data-count-num='')
+                            |1
+                          button.counter__btn(data-count-plus='')
+                            +plus-svg.counter__svg
+                      .cart-page__product-price 
+                        |3 900 руб.
+                      .cart-page__product-icon 
+                        +trash-svg.cart-page__product-svg
+            .cart-page__buttons 
+              +link
+                |Вернуться в магазин
+              +button 
+                |Оформить заказа
+          .cart-page__col
+            .only-desktop
+              .cart-page__card
+                .cart-page__card-top 
+                  |Ваш заказ
+                .cart-page__card-body 
+                  .cart-page__card-item 
+                    .cart-page__card-label 
+                      |Товаров на:
+                    .cart-page__card-text 
+                      |7 800 руб.
+                  .cart-page__card-item 
+                    .cart-page__card-label 
+                      |Доставка:
+                    .cart-page__card-text 
+                      |бесплатно
+                  .cart-page__card-bot 
+                    .cart-page__card-item 
+                      .cart-page__card-label 
+                        |Итого:
+                      .cart-page__card-text 
+                        |7 800 руб.
+              .cart-page__promo
+                .cart-page__promo-title 
+                  |Промокод для скидки:
+                form.cart-page__promo-form(action="")
+                  input.input(type='text' placeholder = 'Введите промокод' required)
+                  .cart-page__promo-btn 
+                    +button.button--wide 
+                      |Применить
+            .only-mobile 
+              .cart-page__promo
+                .cart-page__promo-title 
+                  |Промокод
+                a.cart-page__promo-link(href="#") 
+                  |Есть промокод?
+              .cart-page__card
+                .cart-page__card-body 
+                  .cart-page__card-item 
+                    .cart-page__card-label 
+                      |Товаров на:
+                    .cart-page__card-text 
+                      |7 800 руб.
+                  .cart-page__card-item 
+                    .cart-page__card-label 
+                      |Доставка:
+                    .cart-page__card-text 
+                      |бесплатно
+                  .cart-page__card-bot 
+                    .cart-page__card-item 
+                      .cart-page__card-label 
+                        |Итого:
+                      .cart-page__card-text 
+                        |7 800 руб.
+                    .cart-page__card-btn 
+                      +button.button--wide 
+                        |Оформить заказа

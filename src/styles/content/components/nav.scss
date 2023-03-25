@@ -3,7 +3,7 @@
   @media #{media("<")} {
     padding: rem(30px) rem(28px);
 
-    border: 1px solid #EBEBEB;
+    border: 1px solid color(borders-third);
   }
 
   &__item {

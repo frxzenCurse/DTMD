@@ -8,6 +8,7 @@ import "./scripts/accordion";
 import "./scripts/custom-select";
 import "./scripts/catalog-filters";
 import "./scripts/select";
+import "./scripts/counter";
 import mask from "inputmask";
 
 // phone mask
