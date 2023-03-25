@@ -14,3 +14,15 @@ mixin select
         each item, i in attributes.options
           option(value=item)
             |#{item}
+
+mixin radio 
+  .radio(class=attributes.class) 
+    label.radio__label
+      input.radio__input(type="radio" name=attributes.name checked=attributes.checked)
+      .radio__icon
+      .radio__col 
+        .radio__title
+          |#{attributes.title}
+        if (attributes.text)
+          .radio__text 
+            |#{attributes.text}

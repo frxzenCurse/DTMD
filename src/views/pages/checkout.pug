@@ -1,0 +1,168 @@
+extends ../app
+
+
+
+block content
+  .cart-page.checkout-page
+    section.section.section--first
+      .container 
+        +breadcrumbs(page = 'Оформление заказа')
+        h1.title 
+          |Оформление заказа
+        .cart-page__row 
+          .cart-page__col
+            form.checkout-page__form(action="/") 
+              .checkout-page__list 
+                .checkout-page__item
+                  .checkout-page__top 
+                    .checkout-page__title 
+                      |Товаров в заказе
+                  .checkout-page__body
+                    .only-desktop
+                      - for (i = 0; i < 3; i++)
+                        .checkout-page__product
+                          .checkout-page__product-col
+                            .checkout-page__product-img
+                              img(src="assets/images/product-1.jpg", alt="")
+                            .checkout-page__product-content 
+                              .checkout-page__product-title 
+                                |Водолазка DU-1 White (L)
+                              .checkout-page__product-text 
+                                |Размер L
+                          .checkout-page__product-col
+                            .checkout-page__product-size  
+                              |1 шт
+                          .checkout-page__product-col
+                            .checkout-page__product-title 
+                              |3 900 руб.
+                    .only-mobile
+                      .checkout-page__cart
+                        .checkout-page__title 
+                          |Моя корзина
+                        a.checkout-page__link(href="#") 
+                          |Изменить
+                      .checkout-page__product
+                        - for (i = 0; i < 3; i++)
+                          .checkout-page__product-img
+                            img(src="assets/images/product-1.jpg", alt="")
+                        .checkout-page__product-more 
+                          |Еще 2
+                .checkout-page__item
+                  .checkout-page__top 
+                    .checkout-page__title 
+                      |Укажите данные получателя
+                  .checkout-page__body
+                    .checkout-page__grid 
+                      +input(type='text' placeholder = 'Введите ФИО' label = 'Ф.И.О.')
+                      +input(type='email' placeholder = 'Введите E-Mail' label = '* E-Mail')
+                      .input-wrapper 
+                        .input-wrapper__label 
+                          |* Телефон
+                        input.input(type='phone' required placeholder = 'Введите телефон' data-mask-phone='')
+                    .checkout-page__offset 
+                      .checkbox.checkbox--gray
+                        label.checkbox__label 
+                          input.checkbox__input(type="checkbox" checked)
+                          .checkbox__box 
+                            +check-svg.checkbox__svg 
+                          .checkbox__text 
+                            |Хочу получать информацию о новых коллекциях и акциях
+                .checkout-page__item
+                  .checkout-page__top 
+                    .checkout-page__title 
+                      |Выберите способ доставки
+                  .checkout-page__body
+                    .input-wrapper 
+                      .input-wrapper__label 
+                        |Введите город доставки
+                      .input-wrapper__icon 
+                        +search-svg.input-wrapper__svg
+                      input.input.input--icon(type='text' placeholder = 'Введите название...' required)
+                    .checkout-page__offset
+                      .checkout-page__grid.big 
+                        .radio
+                          label.radio__label
+                            input.radio__input(type="radio" name='delivery')
+                            .radio__icon
+                            .radio__col 
+                              .radio__title
+                                |СДЭК&nbsp; #[br] (До пункта выдачи)
+                              .radio__text 
+                                |400 руб
+                        .radio
+                          label.radio__label
+                            input.radio__input(type="radio" name='delivery' checked)
+                            .radio__icon
+                            .radio__col 
+                              .radio__title
+                                |СДЭК&nbsp; #[br] (Курьером до двери)
+                              .radio__text 
+                                |500 руб
+                        .radio
+                          label.radio__label
+                            input.radio__input(type="radio" name='delivery')
+                            .radio__icon
+                            .radio__col 
+                              .radio__title
+                                |Самовывоз из&nbsp; #[br] Шоурума из Москвы
+                              .radio__text 
+                                |0 руб
+                    .checkout-page__offset 
+                      +input(placeholder = 'Введите адрес доставки' label = 'Введите адрес доставки курьером')
+                    .checkout-page__bot 
+                      .checkout-page__bot-heading 
+                        |Условия доставки
+                      .checkout-page__bot-text 
+                        |Самовывоз осуществляется по адресу: г. Москва, Комсомольский проспект 16/2, стр 3. #[br] Срок хранения заказов: 14 дней.
+                .checkout-page__item
+                  .checkout-page__top 
+                    .checkout-page__title 
+                      |Выберите способ оплаты
+                  .checkout-page__body
+                    .checkout-page__offset
+                      .checkout-page__buttons
+                        +radio.radio--alt(name = 'payment' title = 'Наличными / картой при получении' checked = true)
+                        +radio.radio--alt(name = 'payment' title = 'Картой на сайте')
+                    .checkout-page__caption 
+                      |Оплата производится наличными деньгами в момент получения заказа. Подтверждением вашей оплаты является фискальный кассовый чек, вручаемый во время получения и оплаты заказа.
+              .checkout-page__offset 
+                .checkbox.checkbox--start
+                  label.checkbox__label 
+                    input.checkbox__input(type="checkbox" checked)
+                    .checkbox__box 
+                      +check-svg.checkbox__svg 
+                    .checkbox__text 
+                      |Оплата производится наличными деньгами в момент получения заказа. Подтверждением вашей оплаты является фискальный кассовый чек, вручаемый во время получения и оплаты заказа.
+              .checkout-page__offset 
+                +button.button--wide 
+                  |Оформить заказ
+          .cart-page__col
+            .only-desktop
+              .cart-page__card
+                .cart-page__card-top 
+                  |Ваш заказ
+                .cart-page__card-body 
+                  .cart-page__card-item 
+                    .cart-page__card-label 
+                      |Товаров на:
+                    .cart-page__card-text 
+                      |7 800 руб.
+                  .cart-page__card-item 
+                    .cart-page__card-label 
+                      |Доставка:
+                    .cart-page__card-text 
+                      |бесплатно
+                  .cart-page__card-bot 
+                    .cart-page__card-item 
+                      .cart-page__card-label 
+                        |Итого:
+                      .cart-page__card-text 
+                        |7 800 руб.
+              .cart-page__promo
+                .cart-page__promo-title 
+                  |Промокод для скидки:
+                form.cart-page__promo-form(action="")
+                  input.input(type='text' placeholder = 'Введите промокод' required)
+                  .cart-page__promo-btn 
+                    +button.button--wide 
+                      |Применить
