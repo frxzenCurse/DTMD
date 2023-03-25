@@ -8,7 +8,7 @@
     @media #{media(">")} {
       padding-bottom: rem(30px);
       
-      border-bottom: 1px solid #F1F1F1;
+      border-bottom: 1px solid color(gray-bg);
     }
   }
 

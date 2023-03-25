@@ -1,6 +1,8 @@
 mixin card 
-  a.card(href="#")
-    .card__container 
+  a.card(href="#" class=attributes.class)
+    .card__container
+      .card__hover 
+        img.card__hover-img(src="assets/images/card-hover.jpg", alt="")
       if (attributes.discount)
         .card__discount
           |- 15%

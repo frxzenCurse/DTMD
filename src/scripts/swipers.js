@@ -1,4 +1,5 @@
 import Swiper from "swiper/bundle";
+import { mediaQuery } from './mediaQueries'
 
 const BREAKPOINT = 1280;
 
@@ -14,6 +15,8 @@ export function swiperInit() {
       const slider_prev = $(`[data-slider-button="${slider_prev_id}"]`);
       const slider_next = $(`[data-slider-button="${slider_next_id}"]`);
       const slider_buttons = $('[data-slider-buttons]')
+      let thumbsSlider
+      let slider_swiper
       
       if (slider_buttons.length) {
         const slides_count = slider_el.find('.swiper-slide').length
@@ -24,15 +27,36 @@ export function swiperInit() {
         }
       }
 
+      if (slider_el[0].hasAttribute('data-thumbs-slider')) {
+        let direction = mediaQuery.matches ? 'vertical' : 'horizontal'
+        const thumbsSliderEl = $(`[data-thumbs-id="${slider_id}"]`)
+        thumbsSlider = new Swiper(thumbsSliderEl[0], {
+          direction: direction,
+          slidesPerView: 'auto',
+          spaceBetween: 8,
+          on: {
+            init: function(swiper) {
+              const thumbs = swiper.el.querySelectorAll('[data-thumb]')
+
+              thumbs.forEach((thumb, i) => {
+                thumb.onclick = function() {
+                  slider_swiper.slideTo(i)
+                }
+              })
+            },
+          }
+        })
+      }
+
       let slider_options = {
         slidesPerView: "auto",
 
-        spaceBetween: 10,
+        spaceBetween: 6,
         speed: 500,
 
         breakpoints: {
           [BREAKPOINT]: {
-            spaceBetween: 20,
+            spaceBetween: 30,
           },
         },
       };
@@ -68,6 +92,25 @@ export function swiperInit() {
             }
           };
           break;
+          case 11:
+            slider_options = {
+              pagination: {
+                el: `[data-swiper-pagination="${slider_id}"]`,
+                type: 'bullets',
+              },
+              on: {
+                slideChange: function(swiper) {
+                  const index = swiper.realIndex
+                  // const thumbs = thumbsSlider.el.querySelectorAll('[data-thumb]')
+                  // const activeThumb = thumbsSlider.el.querySelector('[data-thumb].active')
+  
+                  // activeThumb.classList.remove('active')
+                  // thumbs[index].classList.add('active')
+                  thumbsSlider.slideTo(index)
+                }
+              }
+            };
+            break;
         case 2:
           slider_options = {
             ...slider_options,
@@ -76,7 +119,7 @@ export function swiperInit() {
           break;
       }
 
-      const slider_swiper = new Swiper(slider_el[0], slider_options);
+      slider_swiper = new Swiper(slider_el[0], slider_options);
 
       slider_prev.on("click", () => {
         slider_swiper.slidePrev();

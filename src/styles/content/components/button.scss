@@ -10,6 +10,12 @@
   border: 1px solid color(black);
   @include fsl(14px, 130%);
   font-weight: 700;
+  transition: $transition;
+
+  &:hover {
+    background-color: color(black);
+    color: color(white);
+  }
 
   &--wide {
     width: 100%;

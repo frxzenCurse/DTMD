@@ -49,6 +49,7 @@
     "jquery": "^3.6.4",
     "normalize.css": "^8.0.1",
     "reset-css": "^5.0.1",
+    "select2": "^4.1.0-rc.0",
     "swiper": "^7.4.1"
   }
 }

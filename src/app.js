@@ -7,6 +7,7 @@ import "./scripts/no-transition";
 import "./scripts/accordion";
 import "./scripts/custom-select";
 import "./scripts/catalog-filters";
+import "./scripts/select";
 import mask from "inputmask";
 
 // phone mask
