@@ -8,6 +8,13 @@
     }
   }
 
+  &--regular {
+    margin-top: rem(130px);
+    @media #{media("<")} {
+      margin-top: rem(50px);
+    }
+  }
+
   &--about {
     margin-top: rem(80px);
     @media #{media("<")} {

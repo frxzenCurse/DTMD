@@ -20,4 +20,14 @@
   &--wide {
     width: 100%;
   }
+
+  &--order {
+    padding: rem(15px) 0;
+  }
+
+  &.disabled {
+    pointer-events: none;
+    color: #8F8F8F;
+    border-color: #8F8F8F;
+  }
 }

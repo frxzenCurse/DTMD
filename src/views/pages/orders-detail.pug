@@ -1,0 +1,225 @@
+extends ../app
+
+
+
+block content
+  .profile-page.order-page
+    -
+      var ddata = [
+        {
+          label: 'Цвет:',
+          text: 'Серый'
+        },
+        {
+          label: 'Размер:',
+          text: 'XXL'
+        },
+        {
+          label: 'Кол-во товаров:',
+          text: '2'
+        },
+        {
+          label: 'Цена:',
+          text: '17 700 руб.'
+        },
+      ]
+    section.section.section--first
+      .container
+        .only-mobile 
+          .profile-page__wrapper
+            +breadcrumbs(items = ['Личный кабинет'] page = 'Мои заказы')
+            h1.title.profile-page__title
+              |Мои заказы
+            .profile-page__btn 
+              +link.button--wide 
+                |Вернуться в магазин
+        .section__row 
+          .section__col
+            .profile-page__offset
+              ul.nav 
+                each link, i in ['Мои заказы', 'Личные данные ', 'Рассылка', 'Выход', ]
+                  li.nav__item
+                    if (i === 0)
+                      .nav__link.active
+                        .nav__text 
+                          |#{link}
+                        .nav__icon 
+                          +arrow-svg.nav__svg
+                    else
+                      a.nav__link(href="#")
+                        .nav__text 
+                          |#{link}
+                        .nav__icon 
+                          +arrow-svg.nav__svg
+          .section__col
+            .only-desktop
+              +breadcrumbs(items = ['Личный кабинет'] page = 'Мои заказы')
+              .order-page__wrapper
+                .order-page__top
+                  h1.title
+                    |Мои заказы
+                  a.profile-page__link(href="#")
+                    |Посмотреть исторю заказов
+              .order-page__wrapper
+                .order-page__title 
+                  |Детали заказа: 220916-0308S9-UA
+                .order-page__container
+                  .order-page__stat 
+                    .order-page__stat-item 
+                      .order-page__stat-label 
+                        |Принято:
+                      .order-page__stat-text 
+                        |16.09.2022
+                    .order-page__stat-item 
+                      .order-page__stat-label 
+                        |Кол-во товаров:
+                      .order-page__stat-text 
+                        |2
+                    .order-page__stat-item 
+                      .order-page__stat-label 
+                        |Статус:
+                      .order-page__stat-text.red
+                        |Не оплачено
+            .only-mobile
+              .order-page__wrapper
+                .profile-page__container
+                  a.profile-page__link(href="#")
+                    |Посмотреть исторю заказов
+              .order-page__content
+                .order-page__title 
+                  |Детали заказа: 220916-0308S9-UA
+                .order-page__stat 
+                  .order-page__stat-item 
+                    .order-page__stat-label 
+                      |Принято:
+                    .order-page__stat-text 
+                      |16.09.2022
+                  .order-page__stat-item 
+                    .order-page__stat-label 
+                      |Кол-во товаров:
+                    .order-page__stat-text 
+                      |2
+                  .order-page__stat-item 
+                    .order-page__stat-label 
+                      |Статус:
+                    .order-page__stat-text.red
+                      |Не оплачено
+            .order-page__wrapper
+              .only-desktop
+                .order-page__title 
+                  |Товары
+              .order-page__list 
+                - for (j = 0; j < 2; j++)
+                  .order-page__item
+                    .order-page__item-row 
+                      .order-page__item-col
+                        img.order-page__item-img(src="assets/images/product-1.jpg", alt="")
+                      .order-page__item-col
+                        .order-page__stat-title 
+                          |Пальто 268 Kamelot
+                        .order-page__stat 
+                          each item in ddata
+                            .order-page__stat-item 
+                              .order-page__stat-label 
+                                |#{item.label}
+                              .order-page__stat-text 
+                                |#{item.text}
+                        .only-mobile 
+                          .order-page__images 
+                            - for (i = 0; i < 2; i++)
+                              img.order-page__item-img(src="assets/images/product-1.jpg", alt="")
+            .order-page__wrapper
+              .order-page__inner
+                .order-page__title 
+                  |Стоимость заказа
+                .order-page__stat 
+                  .order-page__inner-item 
+                    .order-page__stat-text 
+                      |Сумма товаров: 
+                    .order-page__stat-text 
+                      |17 700 руб.
+                  .order-page__inner-item 
+                    .order-page__stat-text 
+                      |Использованные бонусов: 
+                    .order-page__stat-text 
+                      |700 руб.
+                  .order-page__inner-item 
+                    .order-page__stat-text 
+                      |Стоимость доставки:
+                    .order-page__stat-text
+                      |10 руб.
+                .order-page__inner-total 
+                  .order-page__inner-item
+                    .order-page__inner-text.big
+                      |К оплате:
+                    .order-page__inner-text 
+                      |17 010 руб.
+            .order-page__row 
+              .order-page__col
+                .order-page__title 
+                  |Оплата
+                .order-page__stat 
+                  .order-page__stat-item
+                    .order-page__stat-label 
+                      |Принято:
+                    .order-page__stat-text 
+                      |16.09.2022
+                  .order-page__stat-item
+                    .order-page__stat-label 
+                      |Счет:
+                    .order-page__stat-text 
+                      |23452352
+                  .order-page__stat-item
+                    .order-page__stat-label 
+                      |Вариант оплаты:
+                    .order-page__stat-text 
+                      |Картой при получении
+                  .order-page__stat-item
+                    .order-page__stat-label 
+                      |Статус:
+                    .order-page__stat-text.red
+                      |Не оплачено
+                  .order-page__stat-item
+                    .order-page__stat-label 
+                      |Сумма к оплате:
+                    .order-page__stat-text 
+                      |17 010 руб.
+                .order-page__item-btn 
+                  +button.button--wide
+                    |Изменить способ оплаты
+              .order-page__col
+                .order-page__title 
+                  |Доставка
+                .order-page__stat 
+                  .order-page__stat-item
+                    .order-page__stat-label 
+                      |№ отгрузки:
+                    .order-page__stat-text 
+                      |24244/2
+                  .order-page__stat-item
+                    .order-page__stat-label 
+                      |Статус отгрузки:
+                    .order-page__stat-text.wait
+                      |Ожидает обработки
+                  .order-page__stat-item
+                    .order-page__stat-label 
+                      |Служба доставки:
+                    .order-page__stat-text 
+                      |Самовывоз
+                  .order-page__stat-item
+                    .order-page__stat-label 
+                      |Телефон:
+                    .order-page__stat-text
+                      |+7 232 232 23 23
+                  .order-page__stat-item
+                    .order-page__stat-label 
+                      |Адрес доставки:
+                    .order-page__stat-text 
+                      |г. Тула, ул.Приображенская 12
+                .order-page__buttons 
+                  .order-page__buttons-item 
+                    +button.button--order.button--wide.disabled
+                      |Отменить заказ
+                  .order-page__buttons-item 
+                    +button.button--order.button--wide
+                      |Повторить заказ

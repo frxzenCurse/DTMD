@@ -1,0 +1,85 @@
+extends ../app
+
+include ../components/about
+include ../components/accordion
+
+block content
+  .about-page
+    section.section.about-page__section
+      .only-desktop
+        .about.about--alt
+          .about__icon 
+            +bg-svg.about__svg 
+            +bg-mobile-svg.about__svg.mobile
+          .about__content
+            .container 
+              .about__title 
+                |DTMD - Российский бренд мужской одежды
+              .about__wrapper
+                .about__text
+                  |Мы производим одежду уже более 20 лет на лучших российских фабриках
+      .only-mobile
+        .container
+          +breadcrumbs(page = 'О бренде')
+          h1.title 
+            |О бренде
+          .about-page__text 
+            |Мы производим одежду уже более 20 лет на лучших российских фабриках
+    section.section.section--regular
+      .container 
+        .about-page__list
+          .about-page__item
+            .about-page__item-icon 
+              +about-1-svg.about-page__item-svg
+            .about-page__item-row 
+              .about-page__item-col
+                .about-page__item-title 
+                  |Собственная разработка лекал и конструкций
+                .about-page__item-text 
+                  |Мы понимаем, как сложно создать стильную, удобную, долговечную и при этом функциональную одежду. Наши конструкторы-технологи кропотливо прорабатывают каждую деталь. Все изделия проходят строгий контроль качества и тестирование.
+              .about-page__item-col
+                .about-page__item-img 
+                  img(src="assets/images/about-1.jpg", alt="")
+          .about-page__item.reversed
+            .about-page__item-icon 
+              +about-2-svg.about-page__item-svg
+            .about-page__item-row 
+              .about-page__item-col
+                .about-page__item-title 
+                  |Итальянские ткани и первоклассная фурнитура
+                .about-page__item-text 
+                  |Мы тщательно отбираем материалы у лучших поставщиков, тестируем на предмет качества и износостойкости. И только потом принимаем решение об использовании в одежде DTMD
+              .about-page__item-col
+                .about-page__item-img 
+                  img(src="assets/images/about-2.jpg", alt="")
+          .about-page__item
+            .about-page__item-icon 
+              +about-3-svg.about-page__item-svg
+            .about-page__item-row 
+              .about-page__item-col
+                .about-page__item-title 
+                  |Современные утеплители и мембраны
+                .about-page__item-text 
+                  |Мы учитываем все особенности российской погоды и уделяем особое внимание мембранам и утеплителям. Благодаря этому наши куртки надежно защищают даже в сильный ветер и непогоду, наши пальто выглядят элегантно и современно, ткани и утеплители не скатываются и не деформируются, наши шерстяные брюки не мнуться и сохраняют оптимальный теплообмен.
+              .about-page__item-col
+                .about-page__item-img 
+                  img(src="assets/images/about-3.jpg", alt="")
+    section.section.section--regular.about-page__bot
+      .container 
+        h3.about-page__bot-title 
+          |Особенности материалов, используемых для создания одежды DTMD:
+        .about-page__bot-container 
+          - for (i = 0; i < 6; i++)
+            .about-page__bot-item
+              +accordion.accordion--alt(title = 'МЕМБРАННЫЕ ТКАНИ')
+                .about-page__bot-text 
+                  p 
+                    |Практически для всех курток DTMD мы используем качественные мембранные ткани. Это инновационные многослойные материалы с избирательной проницаемостью, обладающие повышенными защитными свойствами и обеспечивающие телу «дыхание».
+                  p
+                    |Для городской одежды используется мембрана (полимерная пленка) с микроотверстиями,  соединенная с основной тканью. Благодаря особому сечению микроотверстий, ткань защищает от дождя и ветра, но в то же время выводит наружу испарения тела, что позволяет создать комфортный микроклимат, защищает как от переохлаждения, так и от перегрева. 
+                  p
+                    |Одежда из мембранной ткани обладает также свойством отталкивать грязь, благодаря специальным пропиткам. Основными характеристиками для тканей с мембранами являются водонепроницаемость и паропроницаемость. 
+                  p 
+                    |Для городской мужской одежды DTMD актуально значение 5000 мм. Паропроницаемость характеризует массу пара в граммах, которую может вывести 1 м2 материала в заданную единицу времени (обычно 24 часа). 
+                  p 
+                    |Часто встречающийся минимум паропроницаемости составляет 3000 г/м, максимум – от 10000 г/м2 (5000 г/м3 для одежды DTMD).

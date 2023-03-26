@@ -1,4 +1,5 @@
 .about {
+  $comp: &;
   position: relative;
   z-index: 0;
   margin-bottom: rem(80px);
@@ -6,6 +7,17 @@
     margin-bottom: rem(60px);
   }
   overflow: hidden;
+
+  &--alt {
+    #{$comp}__title {
+      max-width: rem(855px);
+      @include fsl(58px);
+    }
+    #{$comp}__text {
+      max-width: rem(413px);
+      @include fsl(20px);
+    }
+  }
 
   &__icon {
     display: flex;

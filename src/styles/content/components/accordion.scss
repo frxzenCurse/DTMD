@@ -25,6 +25,15 @@
     }
   }
 
+  &--alt {
+
+    &.active {
+      #{$comp}__head {
+        border-color: color(black);
+      }
+    }
+  }
+
   &.active {
     #{$comp}__title {
       font-weight: 800;
@@ -45,6 +54,7 @@
     align-items: center;
     justify-content: space-between;
 
+    transition: $transition;
     border-bottom: 1px solid transparent;
     cursor: pointer;
   }
