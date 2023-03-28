@@ -2,14 +2,14 @@ extends ../app
 
 include ../components/card
 include ../components/about
-include ../components/accordion
+include ../components/catalog-menu
 
 
 block content
   .catalog-page
     section.section.section--first
       .container 
-        .section__row 
+        .section__row.section__row--alt
           .section__col
             ul.nav 
               each title in ['Верхняя одежда', 'Пиджаки', 'Жилеты', 'Брюки', 'Джемперы', 'Футболки и поло']
@@ -24,13 +24,13 @@ block content
             +breadcrumbs(page='Новинки')
             .catalog-page__top 
               h1.title 
-                |НОВИНКИ
+                |Новинки
               .catalog-page__select 
                 .catalog-page__text
                   |Сортировать по:
                 .custom-select(data-custom-root='')
                   select.custom-select__select(data-custom-select='')
-                    each item, i in ['Популярности', 'Цене', 'Отзывам', 'Рейтингу', 'Новинкам']
+                    each item, i in ['Популярности', 'Цене', 'Отзывам', 'Рейтингу', 'Новинкам', 'акции', 'Популярности2']
                       option(value=`${item} ${i}`)
                         |#{item} 
                   .custom-select__button(data-custom-btn='')
@@ -39,11 +39,31 @@ block content
                       +arrow-svg.custom-select__svg
                   .custom-select__dropdown(data-custom-drop='')
                     ul.custom-select__list(data-custom-list='')
+            .only-mobile 
+              .catalog-page__buttons 
+                .catalog-page__buttons-item 
+                  .catalog-page__button(data-filters-button='')
+                    .catalog-page__icon 
+                      +filter-svg.catalog-page__svg 
+                    .catalog-page__button-text 
+                      |Категории
+                .catalog-page__buttons-item.custom-select(data-custom-root='') 
+                  .catalog-page__button(data-custom-btn='')
+                    select.custom-select__select(data-custom-select='')
+                      each item, i in ['Популярности', 'Цене', 'Отзывам', 'Рейтингу', 'Новинкам', 'акции', 'Популярности2']
+                        option(value=`${item} ${i}`)
+                          |#{item} 
+                    .catalog-page__icon 
+                      +sort-svg.catalog-page__svg 
+                    .catalog-page__button-text(data-custom-text='')
+                      |Сортировка
+                  .custom-select__dropdown(data-custom-drop='')
+                    ul.custom-select__list(data-custom-list='')
             .catalog-page__grid 
               - for (i = 0; i < 4; i++)
                 +card(img = 'product-1')
                 +card(img = 'product-2')
-                +card(img = 'product-3' discount = true isActive = true)
+                +card(img = 'product-3' discount = true isActive = true old = true)
             .catalog-page__inner
               .catalog-page__pagi
                 .catalog-page__pagi-btn 
@@ -62,3 +82,6 @@ block content
                 +button.button--wide
                   |Показать еще
     +about.section.section--about
+  
+block catalog-menu
+  +catalog-menu
