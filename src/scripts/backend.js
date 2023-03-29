@@ -9,6 +9,7 @@ function init() {
 $(() => {
   init();
   forms();
+  selectEventAjax();
 });
 
 window.objFormSuccess = {
@@ -112,6 +113,25 @@ function pagen() {
         if (pagenResponse.length) {
           pagenContainer.append(pagenResponse);
         }
+      },
+    });
+  });
+}
+
+function selectEventAjax() {
+  $('[data-ajax-event]').on('change', function() {
+    $.ajax({
+      type: 'GET',
+      url: window.location.href,
+      dataType: 'html',
+      data: JSON.parse($(this).val()),
+      success: function(r) {
+        $('[data-replace]').each((i, item) => {
+          const jqObj = $(item);
+
+          jqObj.empty();
+          jqObj.append($(r).find(`[data-replace=${jqObj.data('replace')}]`).html());
+        });
       },
     });
   });
