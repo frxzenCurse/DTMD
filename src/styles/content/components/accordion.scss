@@ -36,7 +36,7 @@
 
   &.active {
     #{$comp}__title {
-      // font-weight: 800;
+      font-weight: 800;
     }
 
     #{$comp}__plus {
@@ -48,7 +48,7 @@
   }
 
   &__head {
-    padding: rem(15px) 0;
+    padding-bottom: rem(15px);
 
     display: flex;
     align-items: center;
