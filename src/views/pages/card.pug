@@ -140,13 +140,13 @@ block content
                     +favorite-svg.card-page__item-svg
               .card-page__accordions
                 .card-page__accordions-item 
-                  .accordion.active(data-accordion='')
+                  .accordion(data-accordion='')
                     .accordion__head(data-accordion-button='')
                       .accordion__title 
                         |Описание товара
                       .accordion__icon 
                         .accordion__plus 
-                    .accordion__body(data-accordion-dropdown='' style="display: block")
+                    .accordion__body(data-accordion-dropdown='')
                       .card-page__text 
                         p
                           |Эффектные брюки в стиле Smart Casual, изготовленные из премиальных шерстяных тканей SUPER 100`S, ведущих Итальянских производителей (VITALE BARBERIS Canonico S.P.a и DRAGO S.P.a). #[br] Пометка "Super" в описании тканей указывает на высокотехнологичные свойства ткани, благодаря которым, вещи практически не мнутся. #[br] В холодное время года в них тепло, а в теплое - не жарко. Цифры (100-210’S) указывают на то количество километров, которое получают из 1 килограмма шерсти путем кручения нити. Такие ткани мягкие и нежные на ощупь. #[br] Именно такие материалы мы используем для создания наших брюк Pelegrinni.
@@ -158,13 +158,13 @@ block content
                           strong 
                             |Производитель: #[span DTMD]
                 .card-page__accordions-item 
-                  .accordion.active(data-accordion='')
+                  .accordion(data-accordion='')
                     .accordion__head(data-accordion-button='')
                       .accordion__title 
                         |Информация о доставке
                       .accordion__icon 
                         .accordion__plus 
-                    .accordion__body(data-accordion-dropdown='' style="display: block")
+                    .accordion__body(data-accordion-dropdown='')
                       ul.card-page__list
                         each item in ddata
                           li.card-page__list-item

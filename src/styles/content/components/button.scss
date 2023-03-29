@@ -6,6 +6,7 @@
 
   font-family: $ff-primary;
   cursor: pointer;
+  color: color(black);
   background: none;
   border: 1px solid color(black);
   @include fsl(14px, 130%);
