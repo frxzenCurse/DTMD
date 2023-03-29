@@ -3,6 +3,7 @@ function accordionDropdown(e, root) {
   const target = $(e.target)
 
   if (target.closest('[data-accordion-button]').length) {
+    alert('CLICKED')
     target.closest(accordion).toggleClass('active');
     target.closest(accordion).find('[data-accordion-dropdown]').eq(0).slideToggle()
   }
