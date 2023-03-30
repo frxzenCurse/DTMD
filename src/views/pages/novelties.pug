@@ -25,7 +25,7 @@ block content
             .catalog-page__top 
               h1.title 
                 |Новинки
-              .catalog-page__select 
+              //- .catalog-page__select 
                 .catalog-page__text
                   |Сортировать по:
                 .custom-select(data-custom-root='')
@@ -47,7 +47,7 @@ block content
                       +filter-svg.catalog-page__svg 
                     .catalog-page__button-text 
                       |Категории
-                .catalog-page__buttons-item.custom-select(data-custom-root='') 
+                //- .catalog-page__buttons-item.custom-select(data-custom-root='') 
                   .catalog-page__button(data-custom-btn='')
                     select.custom-select__select(data-custom-select='')
                       each item, i in ['Популярности', 'Цене', 'Отзывам', 'Рейтингу', 'Новинкам', 'акции', 'Популярности2']
