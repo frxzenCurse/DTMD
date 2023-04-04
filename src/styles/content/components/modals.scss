@@ -1,0 +1,76 @@
+
+.modal {
+  position: absolute;
+  right: 0;
+  top: 0;
+  @media #{media("<")} {
+    bottom: 0;
+    top: auto;
+
+    width: 100%;
+    height: auto;
+    min-height: 75vh;
+  }
+  display: none;
+  width: rem(600px);
+  height: 100%;
+
+  overflow: visible;
+  background-color: color(white);
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  &__top {
+
+    height: rem(55px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+    background-color: color(gray-bg);
+    @include fsl(12px);
+  }
+
+  &__item {
+    height: rem(55px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+    border-bottom: 1px solid color(borders);
+    @include fsl(12px);
+  }
+
+  .fancybox-button {
+    right: 100%;
+    @media #{media("<")} {
+      bottom: 100%;
+      right: 0;
+      top: auto;
+    }
+    opacity: 1;
+    background-color: color(black);
+
+    path {
+      fill: color(white);
+    }
+  }
+}
+
+/* Custom animation slide-in-out */
+.fancybox-fx-right.fancybox-slide--previous {
+  transform: translateX(100%);
+}
+
+.fancybox-fx-right.fancybox-slide--next {
+  transform: translateX(100%);
+}
+
+.fancybox-fx-right.fancybox-slide--current {
+  transform: translateX(0);
+}

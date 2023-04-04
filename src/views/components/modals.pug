@@ -1,0 +1,23 @@
+
+mixin size-modal
+  .modal(data-fancy-modal="sizes")
+    .modal__grid
+      each item in ['Размер', 'Размер (INT)', 'Обхват груди, см', 'Обхват талии, см', ] 
+        .modal__top 
+          |#{item}
+      .modal__col
+        each item in ['46', '48', '50', '52', '54', '56', '58', '60', '62', '64', ]
+          .modal__item 
+            |#{item}
+      .modal__col
+        each item in ['M', 'M/L', 'L/XL', 'XL/XXL', 'XXL/XXXL', 'XXXL', '', '', '', '', ]
+          .modal__item 
+            |#{item}
+      .modal__col
+        each item in ['90-94', '94-98', '98-102', '102-106', '106-110', '110-114', '114-118', '118-122', '122-126', '126-130', ]
+          .modal__item 
+            |#{item}
+      .modal__col
+        each item in ['78-82', '82-86', '	86-90', '90-94', '94-98', '98-102', '102-106', '106-110', '	110-114', '114-118', ]
+          .modal__item 
+            |#{item}
