@@ -10,6 +10,7 @@ $(() => {
   init();
   forms();
   selectEventAjax();
+  basketEvent();
 });
 
 window.objFormSuccess = {
@@ -132,6 +133,55 @@ function selectEventAjax() {
           jqObj.empty();
           jqObj.append($(r).find(`[data-replace=${jqObj.data('replace')}]`).html());
         });
+      },
+    });
+  });
+}
+
+window.basket = {
+  eventsCallable: {
+    success: {
+      add: obj => {
+        obj.css({
+          background: 'black',
+          color: 'white',
+        });
+
+        obj.text('Товар в корзине');
+      },
+      update: () => {
+
+      },
+      delete: () => {
+
+      },
+    },
+    error: {
+      add: (obj, r) => {
+        alert(r.message);
+      },
+      update: (obj, r) => {
+        alert(r.message);
+      },
+      delete: (obj, r) => {
+        alert(r.message);
+      },
+    },
+  }
+}
+
+function basketEvent() {
+  $(document).on('click', '[data-type=basket]', function() {
+    const thisObj = $(this),
+      type = thisObj.data('event-type');
+
+    $.ajax({
+      type: 'POST',
+      url: `${window.config.path}/include/ajax/basket/${type}.php`,
+      dataType: 'json',
+      data: thisObj.data('params'),
+      success: function(r) {
+        window.basket.eventsCallable[r.success ? 'success' : 'error'][type](thisObj, r);
       },
     });
   });
