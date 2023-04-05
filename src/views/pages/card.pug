@@ -1,6 +1,7 @@
 extends ../app
 
 include ../components/card
+include ../components/modals
 
 block content
   .card-page
@@ -127,7 +128,7 @@ block content
                 .card-page__top 
                   .card-page__prop 
                     |Размер: #[span M]
-                  a.card-page__link(href="#")
+                  .card-page__link(data-fancy-button='sizes')
                     |Таблица размеров
                 .card-page__select 
                   +select(placeholder = 'Выберите размер' options=['qwe', 'asd', 'zxc', 'qwe1', 'asd2', 'zxc3', '32', '44', '55'])
@@ -292,3 +293,4 @@ block content
                 +help-4-svg.card-page__bot-svg 
               .card-page__bot-text 
                 |Как сделать возврат?
+  +size-modal
