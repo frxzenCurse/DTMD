@@ -14,8 +14,8 @@ $(() => {
 });
 
 window.objFormSuccess = {
-  redirect: form => {
-    window.location.href = form.data('redirect');
+  redirect: (form, r) => {
+    window.location.href = form.data('redirect') + r.id + '/';
   },
 }
 
@@ -141,20 +141,33 @@ function selectEventAjax() {
 window.basket = {
   eventsCallable: {
     success: {
-      add: obj => {
-        obj.css({
-          background: 'black',
-          color: 'white',
-        });
+      json: {
+        add: obj => {
+          obj.css({
+            background: 'black',
+            color: 'white',
+          });
 
-        obj.text('Товар в корзине');
+          obj.text('Товар в корзине');
+        },
       },
-      update: () => {
+      html: {
+        replace: (obj, r) => {
+          $('[data-replace]').each((i, item) => {
+            const jqObj = $(item),
+              link = jqObj.data('replace');
 
-      },
-      delete: () => {
+            let linkElem = $(r).filter(`[data-replace=${link}]`);
 
-      },
+            if (!linkElem.length) {
+              linkElem = $(r).find(`[data-replace=${link}]`);
+            }
+
+            jqObj.empty();
+            jqObj.append(linkElem.children());
+          });
+        },
+      }
     },
     error: {
       add: (obj, r) => {
@@ -173,15 +186,24 @@ window.basket = {
 function basketEvent() {
   $(document).on('click', '[data-type=basket]', function() {
     const thisObj = $(this),
-      type = thisObj.data('event-type');
+      type = thisObj.data('event-type'),
+      dataType = thisObj.data('format-type'),
+      url = thisObj.data('url');
 
     $.ajax({
       type: 'POST',
-      url: `${window.config.path}/include/ajax/basket/${type}.php`,
-      dataType: 'json',
+      url: url ? url : `${window.config.path}/include/ajax/basket/${type}.php`,
+      dataType: dataType ? dataType : 'json',
       data: thisObj.data('params'),
       success: function(r) {
-        window.basket.eventsCallable[r.success ? 'success' : 'error'][type](thisObj, r);
+        switch (this.dataType) {
+          case 'html':
+            window.basket.eventsCallable.success.html.replace(thisObj, r);
+            break;
+          case 'json':
+            window.basket.eventsCallable[r.success ? 'success' : 'error'].json[type](thisObj, r);
+            break;
+        }
       },
     });
   });
