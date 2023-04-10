@@ -1,3 +1,5 @@
+import {swiperInit} from "./swipers";
+
 function init() {
   const path = $('[data-type=templ-path]');
 
@@ -128,10 +130,19 @@ function selectEventAjax() {
       data: JSON.parse($(this).val()),
       success: function(r) {
         $('[data-replace]').each((i, item) => {
-          const jqObj = $(item);
+          const jqObj = $(item),
+            selector = jqObj.data('replace');
+
+          let response = $(r).filter(`[data-replace=${selector}]`);
+
+          if (!response.length) {
+            response = $(r).find(`[data-replace=${selector}]`);
+          }
 
           jqObj.empty();
-          jqObj.append($(r).find(`[data-replace=${jqObj.data('replace')}]`).html());
+          jqObj.append(response.html());
+
+          swiperInit();
         });
       },
     });
