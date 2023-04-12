@@ -13,6 +13,7 @@ $(() => {
   forms();
   selectEventAjax();
   basketEvent();
+  pagen();
 });
 
 window.objFormSuccess = {
@@ -97,8 +98,7 @@ function pagen() {
     const thisObj = $(this),
       container = thisObj.parents('[data-container=entity]'),
       itemsContainer = container.find('[data-container=items]'),
-      pagenContainer = container.find('[data-container=pagen]'),
-      pagen = pagenContainer.find('[data-type=pagen]');
+      pagenContainer = container.find('[data-container=pagen]');
 
     $.ajax({
       type: 'GET',
@@ -108,10 +108,10 @@ function pagen() {
         ajax: 'pagen',
       },
       success: function(r) {
-        itemsContainer.append($(r).find('[data-container=items]').children());
-        pagen.remove();
+        itemsContainer.append($(r).filter('[data-container=items]').children());
+        pagenContainer.empty();
 
-        const pagenResponse = $(r).find('[data-type=pagen]');
+        const pagenResponse = $(r).filter('[data-container=pagen]').children();
 
         if (pagenResponse.length) {
           pagenContainer.append(pagenResponse);
@@ -215,6 +215,22 @@ function basketEvent() {
             window.basket.eventsCallable[r.success ? 'success' : 'error'].json[type](thisObj, r);
             break;
         }
+      },
+    });
+  });
+}
+
+function clickEventAjax() {
+  $('[data-ajax-event]').on('click', function() {
+    const thisObj = $(this);
+
+    $.ajax({
+      type: 'POST',
+      url: window.location.href,
+      dataType: 'html',
+      data: thisObj.data('ajax'),
+      success: function(r) {
+
       },
     });
   });
