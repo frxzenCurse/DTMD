@@ -12,6 +12,7 @@ $(() => {
   init();
   forms();
   selectEventAjax();
+  clickEventAjax();
   basketEvent();
   pagen();
 });
@@ -220,17 +221,45 @@ function basketEvent() {
   });
 }
 
+window.ajaxCallable = {
+  active: elem => {
+    let activeElem = elem.parents('[data-container=active]');
+
+    if (!activeElem.length) {
+      activeElem = elem;
+    }
+
+    const isActive = activeElem.hasClass('active');
+
+    if (isActive) {
+      activeElem.removeClass('active');
+    } else {
+      activeElem.addClass('active');
+    }
+  },
+}
+
 function clickEventAjax() {
-  $('[data-ajax-event]').on('click', function() {
-    const thisObj = $(this);
+  $('[data-ajax-event-click]').on('click', function(e) {
+    e.preventDefault();
+
+    const thisObj = $(this),
+      container = thisObj.parents('[data-container]'),
+      url = container.data('url');
 
     $.ajax({
       type: 'POST',
-      url: window.location.href,
-      dataType: 'html',
+      url: url ? url : window.location.href,
+      dataType: 'json',
       data: thisObj.data('ajax'),
       success: function(r) {
+        if (!r.success) {
+          alert(r.message);
 
+          return;
+        }
+
+        window.ajaxCallable[container.data('func')](thisObj, r);
       },
     });
   });
