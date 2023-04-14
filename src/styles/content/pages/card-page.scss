@@ -115,12 +115,6 @@
     justify-content: center;
 
     cursor: pointer;
-
-    &:hover {
-      #{$comp}__item-svg {
-        fill: color(black);
-      }
-    }
   }
   &__item-svg {
     --size: #{rem(24px)};
@@ -129,6 +123,16 @@
     height: var(--size);
     fill: color(white);
     transition: $transition;
+
+    &:hover {
+      fill: color(black);
+    }
+
+    &.active {
+      path {
+        fill: color(black);
+      }
+    }
 
     path {
       stroke: color(black);
