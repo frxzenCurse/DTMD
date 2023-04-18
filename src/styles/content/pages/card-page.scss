@@ -54,6 +54,12 @@
     @include fsl(18px, 130%);
   }
 
+  &__old {
+    margin-left: rem(5px);
+    font-weight: 400;
+    text-decoration: line-through;
+  }
+
   &__promo {
     padding: rem(20px);
 
