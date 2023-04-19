@@ -161,6 +161,8 @@ window.basket = {
           });
 
           obj.text('Товар в корзине');
+
+          window.ajaxCallable.counter(obj, true);
         },
       },
       html: {
@@ -223,7 +225,8 @@ function basketEvent() {
 
 window.ajaxCallable = {
   active: elem => {
-    let activeElem = elem.parents('[data-container=active]');
+    let activeElem = elem.parents('[data-container=active]'),
+      adding = true;
 
     if (!activeElem.length) {
       activeElem = elem;
@@ -233,10 +236,30 @@ window.ajaxCallable = {
 
     if (isActive) {
       activeElem.removeClass('active');
+      adding = false;
     } else {
       activeElem.addClass('active');
     }
+
+    window.ajaxCallable.counter(elem, adding);
   },
+  counter: (elem, adding) => {
+    const parent = elem.closest('[data-entity]');
+
+    if (!parent.length) {
+      return;
+    }
+
+    const counterSelector = parent.data('counter-selector');
+
+    if (!counterSelector.length) {
+      return;
+    }
+
+    const counterElem = $(counterSelector);
+
+    counterElem.text(adding ? +counterElem.text() + 1 : +counterElem.text() - 1);
+  }
 }
 
 function clickEventAjax() {
