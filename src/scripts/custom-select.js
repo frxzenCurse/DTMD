@@ -41,13 +41,8 @@ class CustomSelect {
       $(this.dropdown).slideToggle(this.SPEED)
     }
 
-    window.addEventListener('click', event => {
+    this.root.addEventListener('click', event => {
       const target = event.target
-
-      if (!target.closest('[data-custom-root]')) {
-        this.close()
-        return
-      }
 
       if (target.classList.contains('custom-select__item')) {
 
@@ -74,6 +69,17 @@ class CustomSelect {
           }
         }, this.SPEED);
       }
+    })
+
+    window.addEventListener('click', event => {
+      const target = event.target
+
+      if (!target.closest('[data-custom-root]')) {
+        this.close()
+        return
+      }
+
+      
     })
   }
 
@@ -115,7 +121,7 @@ class CustomSelect {
         old = item
       }
     })
-    console.log(old)
+
     old.classList.remove('active')
     newActive.classList.add('active')
   }
