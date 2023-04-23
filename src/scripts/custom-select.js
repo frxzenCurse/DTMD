@@ -15,17 +15,18 @@ class CustomSelect {
     
     for (let i = 0; i < this.select.length; i++) {
       const option = this.select[i]
+      const text = option.textContent
       const value = option.getAttribute('value')
 
-      if (value === this.select.value) {
-        this.text.textContent = option.textContent
+      if (text === this.select[this.select.selectedIndex].textContent) {
+        this.text.textContent = text
         this.selected = {
           value: value,
-          text: option.textContent
+          text: text
         }
-        this.createItem(value, option.textContent, true)
+        this.createItem(text, true)
       } else {
-        this.createItem(value, option.textContent)
+        this.createItem(text)
       }
     }
 
@@ -48,24 +49,28 @@ class CustomSelect {
         return
       }
 
-      if (target.hasAttribute('data-option-value')) {
+      if (target.classList.contains('custom-select__item')) {
 
         if (target.classList.contains('active')) return;
 
-        const value = target.getAttribute('data-option-value')
+        const text = target.textContent.trim()
         this.close()
 
-        this.text.textContent = target.textContent
-        this.select.value = value
+        this.text.textContent = text
+        for (let i = 0; i < this.select.length; i++) {
+          if (this.select[i].textContent === text) {
+            const value = this.select[i].getAttribute('value')
+            this.select.value = value
+          }
+        }
         this.select.dispatchEvent(new Event('change'))
 
         setTimeout(() => {
-          this.changeActive(value)
+          this.changeActive(text)
           // this.removeItem(value)
           // this.createItem(this.selected.value, this.selected.text)
           this.selected = {
-            value: value,
-            text: target.textContent,
+            text: text,
           }
         }, this.SPEED);
       }
@@ -77,16 +82,16 @@ class CustomSelect {
     $(this.dropdown).slideUp(this.SPEED)
   }
 
-  createItem(value, text, isSelected) {
+  createItem(text, isSelected) {
     const div = document.createElement('div')
     if (isSelected) {
       div.innerHTML = 
-        `<div class="custom-select__item active" data-option-value="${value}">
+        `<div class="custom-select__item active">
         ${text}
         </div>`
     } else {
       div.innerHTML = 
-        `<div class="custom-select__item" data-option-value="${value}">
+        `<div class="custom-select__item">
         ${text}
         </div>`
     }
@@ -94,10 +99,23 @@ class CustomSelect {
     this.list.append(div.firstElementChild)
   }
 
-  changeActive(newValue) {
-    const old = this.list.querySelector(`[data-option-value="${this.selected.value}"]`)
-    const newActive = this.list.querySelector(`[data-option-value="${newValue}"]`)
-    
+  changeActive(newText) {
+    // const old = this.list.querySelector(`[data-option-value="${this.selected.value}"]`)
+    // const newActive = this.list.querySelector(`[data-option-value="${newValue}"]`)
+    const items = this.root.querySelectorAll('.custom-select__item')
+    let old
+    let newActive
+
+    items.forEach(item => {
+      if (item.textContent.trim() === newText) {
+        newActive = item
+      }
+
+      if (item.textContent.trim() === this.selected.text) {
+        old = item
+      }
+    })
+    console.log(old)
     old.classList.remove('active')
     newActive.classList.add('active')
   }

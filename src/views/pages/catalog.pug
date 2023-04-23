@@ -37,8 +37,12 @@ block content
                 .custom-select(data-custom-root='')
                   select.custom-select__select(data-custom-select='')
                     each item, i in ['Популярности', 'Цене', 'Отзывам', 'Рейтингу', 'Новинкам', 'акции', 'Популярности2']
-                      option(value=`${item} ${i}`)
-                        |#{item} 
+                      if (i == 2)
+                        option(value=`${item} ${i}` selected)
+                          |#{item} 
+                      else
+                        option(value=`${item} ${i}`)
+                          |#{item} 
                   .custom-select__button(data-custom-btn='')
                     .custom-select__text(data-custom-text='')
                     .custom-select__icon 
