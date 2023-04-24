@@ -21,6 +21,31 @@ window.objFormSuccess = {
   redirect: (form, r) => {
     window.location.href = form.data('redirect') + r.id + '/';
   },
+  reload: () => {
+    $.ajax({
+      type: 'GET',
+      url: window.location.href,
+      dataType: 'html',
+      success: function(r) {
+        window.objFormSuccess.replace(r);
+      },
+    });
+  },
+  replace: r => {
+    $('[data-replace]').each((i, item) => {
+      const jqObj = $(item),
+        selector = jqObj.data('replace');
+
+      let response = $(r).filter(`[data-replace=${selector}]`);
+
+      if (!response.length) {
+        response = $(r).find(`[data-replace=${selector}]`);
+      }
+
+      jqObj.empty();
+      jqObj.append(response.html());
+    });
+  }
 }
 
 window.objFormErrors = {
@@ -130,21 +155,8 @@ function selectEventAjax() {
       dataType: 'html',
       data: JSON.parse($(this).val()),
       success: function(r) {
-        $('[data-replace]').each((i, item) => {
-          const jqObj = $(item),
-            selector = jqObj.data('replace');
-
-          let response = $(r).filter(`[data-replace=${selector}]`);
-
-          if (!response.length) {
-            response = $(r).find(`[data-replace=${selector}]`);
-          }
-
-          jqObj.empty();
-          jqObj.append(response.html());
-
-          swiperInit();
-        });
+        replace(r);
+        swiperInit();
       },
     });
   });
@@ -153,35 +165,16 @@ function selectEventAjax() {
 window.basket = {
   eventsCallable: {
     success: {
-      json: {
-        add: obj => {
-          obj.css({
-            background: 'black',
-            color: 'white',
-          });
+      add: obj => {
+        obj.css({
+          background: 'black',
+          color: 'white',
+        });
 
-          obj.text('Товар в корзине');
+        obj.text('Товар в корзине');
 
-          window.ajaxCallable.counter(obj, true);
-        },
+        window.ajaxCallable.counter(obj, true);
       },
-      html: {
-        replace: (obj, r) => {
-          $('[data-replace]').each((i, item) => {
-            const jqObj = $(item),
-              link = jqObj.data('replace');
-
-            let linkElem = $(r).filter(`[data-replace=${link}]`);
-
-            if (!linkElem.length) {
-              linkElem = $(r).find(`[data-replace=${link}]`);
-            }
-
-            jqObj.empty();
-            jqObj.append(linkElem.children());
-          });
-        },
-      }
     },
     error: {
       add: (obj, r) => {
@@ -201,25 +194,38 @@ function basketEvent() {
   $(document).on('click', '[data-type=basket]', function() {
     const thisObj = $(this),
       type = thisObj.data('event-type'),
-      dataType = thisObj.data('format-type'),
       url = thisObj.data('url');
 
     $.ajax({
       type: 'POST',
       url: url ? url : `${window.config.path}/include/ajax/basket/${type}.php`,
-      dataType: dataType ? dataType : 'json',
       data: thisObj.data('params'),
       success: function(r) {
-        switch (this.dataType) {
-          case 'html':
-            window.basket.eventsCallable.success.html.replace(thisObj, r);
-            break;
-          case 'json':
-            window.basket.eventsCallable[r.success ? 'success' : 'error'].json[type](thisObj, r);
-            break;
+        if (typeof r === 'object') {
+          window.basket.eventsCallable[r.success ? 'success' : 'error'][type](thisObj, r);
+        } else {
+          replace(r);
         }
       },
     });
+  });
+}
+
+function replace(r) {
+  $('[data-replace]').each((i, item) => {
+    const jqObj = $(item),
+      link = jqObj.data('replace');
+
+    console.log(jqObj);
+
+    let linkElem = $(r).filter(`[data-replace=${link}]`);
+
+    if (!linkElem.length) {
+      linkElem = $(r).find(`[data-replace=${link}]`);
+    }
+
+    jqObj.empty();
+    jqObj.append(linkElem.children());
   });
 }
 
