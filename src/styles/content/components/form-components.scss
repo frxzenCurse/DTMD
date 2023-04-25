@@ -84,8 +84,10 @@
     cursor: pointer;
 
     &:hover {
-      #{$comp}__box {
-        border-color: color(green);
+      @media #{media(">")} {
+        #{$comp}__box {
+          border-color: color(green);
+        }
       }
     }
   }

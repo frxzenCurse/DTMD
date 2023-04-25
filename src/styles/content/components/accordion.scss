@@ -122,7 +122,9 @@
     transition: $transition;
 
     &:hover {
-      font-weight: 700;
+      @media #{media(">")} {
+        font-weight: 700;
+      }
     }
   }
 }

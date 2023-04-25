@@ -131,7 +131,9 @@
     transition: $transition;
 
     &:hover {
-      fill: color(black);
+      @media #{media(">")} {
+        fill: color(black);
+      }
     }
 
     &.active {
@@ -259,9 +261,10 @@
     border-left: 1px solid color(gray-light);
 
     &:hover {
-
-      #{$comp}__features-hover {
-        opacity: 1;
+      @media #{media(">")} {
+        #{$comp}__features-hover {
+          opacity: 1;
+        }
       }
     }
   }

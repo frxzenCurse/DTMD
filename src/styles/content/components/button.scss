@@ -14,8 +14,10 @@
   transition: $transition;
 
   &:hover {
-    background-color: color(black);
-    color: color(white);
+    @media #{media(">")} {
+      background-color: color(black);
+      color: color(white);
+    }
   }
 
   &--wide {

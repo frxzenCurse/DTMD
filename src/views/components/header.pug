@@ -62,6 +62,12 @@ mixin header
     .header-menu
       .header-menu__container 
         ul.header-menu__list 
+          li.header-menu__item
+            a.header-menu__button(href="#") 
+              .header-menu__text
+                |ссылка
+              .header-menu__icon 
+                +arrow-svg.header-menu__svg
           li.header-menu__item(data-accordion='')
             .header-menu__button(data-accordion-button='')
               .header-menu__text
@@ -71,7 +77,7 @@ mixin header
             .header-menu__dropdown(data-accordion-dropdown='')
               ul.header-menu__links 
                 each link in ['Верхняя одежда', 'Пиджаки', 'Жилеты', 'Брюки', 'Джемперы', 'Футболки и поло']
-                  li.header-menu__links-item(data-accordion='')
+                  li.header-menu__links-item
                     a.header-menu__link(href="#")
                       .header-menu__text 
                         |#{link}

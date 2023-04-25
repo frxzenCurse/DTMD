@@ -14,12 +14,13 @@
   transition: $transition;
 
   &:hover {
-
-    background-color: color(black);
-
-    #{$comp}__svg {
-      path {
-        stroke: color(white);
+    @media #{media(">")} {
+      background-color: color(black);
+  
+      #{$comp}__svg {
+        path {
+          stroke: color(white);
+        }
       }
     }
   }

@@ -36,8 +36,10 @@
   }
 
   &:hover {
-    #{$comp}__hover {
-      opacity: 1;
+    @media #{media(">")} {
+      #{$comp}__hover {
+        opacity: 1;
+      }
     }
   }
 
@@ -91,8 +93,10 @@
 
     &.active,
     &:hover {
-      #{$comp}__svg {
-        fill: color(white);
+      @media #{media(">")} {
+        #{$comp}__svg {
+          fill: color(white);
+        }
       }
     }
   }
