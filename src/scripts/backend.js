@@ -31,20 +31,8 @@ window.objFormSuccess = {
       },
     });
   },
-  replace: r => {
-    $('[data-replace]').each((i, item) => {
-      const jqObj = $(item),
-        selector = jqObj.data('replace');
-
-      let response = $(r).filter(`[data-replace=${selector}]`);
-
-      if (!response.length) {
-        response = $(r).find(`[data-replace=${selector}]`);
-      }
-
-      jqObj.empty();
-      jqObj.append(response.html());
-    });
+  replace: (form, r) => {
+    replace(r);
   }
 }
 
