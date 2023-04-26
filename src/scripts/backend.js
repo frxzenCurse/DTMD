@@ -15,7 +15,43 @@ $(() => {
   clickEventAjax();
   basketEvent();
   pagen();
+  geo();
 });
+
+function geo() {
+  $(document).on('input', '[data-type=geo]', function() {
+    const thisObj = $(this),
+      data = {
+        version: 2,
+        PAGE_SIZE: thisObj.data('page-size'),
+        PAGE: 0,
+        filter: {
+          '=PHRASE': thisObj.val(),
+          '=NAME.LANGUAGE_ID': thisObj.data('lang-id'),
+          '=SITE_ID': thisObj.data('site-id'),
+        },
+        select: {
+          1: 'CODE',
+          2: 'TYPE_ID',
+          VALUE: 'ID',
+          DISPLAY: 'NAME.NAME',
+        },
+        additionals: {
+          1: 'PATH',
+        },
+      };
+
+    $.ajax({
+      type: 'POST',
+      url: '/bitrix/components/bitrix/sale.location.selector.search/get.php',
+      dataType: 'json',
+      data: data,
+      success: function(r) {
+        console.log(r);
+      },
+    });
+  });
+}
 
 window.objFormSuccess = {
   redirect: (form, r) => {
