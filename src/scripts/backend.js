@@ -54,7 +54,10 @@ function geo() {
 }
 
 window.objFormSuccess = {
-  redirect: (form, r) => {
+  redirect: form => {
+    window.location.href = form.data('redirect');
+  },
+  redirectAnswer: (form, r) => {
     window.location.href = form.data('redirect') + r.id + '/';
   },
   reload: () => {
