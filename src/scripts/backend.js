@@ -16,7 +16,14 @@ $(() => {
   basketEvent();
   pagen();
   geo();
+  selectLocation();
 });
+
+function selectLocation() {
+  $(document).on('change', '[data-select-location]', function() {
+    window.location.href = $(this).val();
+  });
+}
 
 function geo() {
   $(document).on('input', '[data-type=geo]', function() {
@@ -47,7 +54,10 @@ function geo() {
       dataType: 'json',
       data: data,
       success: function(r) {
-        console.log(r);
+        const container = $('[data-container=get-list]');
+        $.each(r.data.ITEMS, (i, item) => {
+          container.append(`<li >${item.DISPLAY}</li>`)
+        });
       },
     });
   });
@@ -66,13 +76,10 @@ window.objFormSuccess = {
       url: window.location.href,
       dataType: 'html',
       success: function(r) {
-        window.objFormSuccess.replace(r);
+        replace(r);
       },
     });
   },
-  replace: (form, r) => {
-    replace(r);
-  }
 }
 
 window.objFormErrors = {
@@ -243,8 +250,6 @@ function replace(r) {
     const jqObj = $(item),
       link = jqObj.data('replace');
 
-    console.log(jqObj);
-
     let linkElem = $(r).filter(`[data-replace=${link}]`);
 
     if (!linkElem.length) {
@@ -252,7 +257,7 @@ function replace(r) {
     }
 
     jqObj.empty();
-    jqObj.append(linkElem.children());
+    jqObj.append(linkElem.html());
   });
 }
 
