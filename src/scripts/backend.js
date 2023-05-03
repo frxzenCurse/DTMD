@@ -17,7 +17,43 @@ $(() => {
   pagen();
   geo();
   selectLocation();
+  dataFormAppend();
+  cdekDeliveryInfo();
 });
+
+function cdekDeliveryInfo() {
+  $(document).on('click', '[data-cdek-delivery-info]', function() {
+    const thisObj = $(this),
+      data = {
+        'CITY_TO': thisObj.data('value'),
+      };
+
+    $.ajax({
+      type: 'POST',
+      url: '/bitrix/js/ipol.sdek/ajax.php',
+      data: data,
+      success: r => {
+        console.log(r);
+      },
+    });
+  });
+}
+
+function dataFormAppend() {
+  $(document).on('click', '[data-form-append]', function() {
+    const thisObj = $(this),
+      form = thisObj.closest('form'),
+      field = thisObj.data('field'),
+      val = thisObj.data('value'),
+      elem = form.find(`input[data-field=${field}]`);
+
+    if (elem.length) {
+      elem.val(val);
+    } else {
+      form.append(`<input type="hidden" data-field="${field}" value="${val}">`);
+    }
+  });
+}
 
 function selectLocation() {
   $(document).on('change', '[data-select-location]', function() {
@@ -51,12 +87,20 @@ function geo() {
     $.ajax({
       type: 'POST',
       url: '/bitrix/components/bitrix/sale.location.selector.search/get.php',
-      dataType: 'json',
       data: data,
-      success: function(r) {
-        const container = $('[data-container=get-list]');
+      success: r => {
+        try {
+          r = JSON.parse(r.replace(/\'/g,'"'));
+        } catch (e) {
+          console.log(e.message);
+        }
+
+        const container = $('[data-container=geo-list]');
+
+        container.empty();
+
         $.each(r.data.ITEMS, (i, item) => {
-          container.append(`<li >${item.DISPLAY}</li>`)
+          container.append(`<li><a style="cursor: pointer;" data-form-append data-cdek-delivery-info data-field="LOCATION" data-value="${item.DISPLAY}">${item.DISPLAY}</a></li>`);
         });
       },
     });
