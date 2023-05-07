@@ -148,4 +148,10 @@
     width: var(--size);
     height: var(--size);
   }
+
+  &__search {
+    display: grid;
+    gap: rem(20px);
+    grid-template-columns: 7fr 3fr;
+  }
 }

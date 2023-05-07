@@ -72,12 +72,18 @@ block content
                     .checkout-page__title 
                       |Выберите способ доставки
                   .checkout-page__body
-                    .input-wrapper 
+                    .input-wrapper.input-wrapper--search(data-search='')
                       .input-wrapper__label 
                         |Введите город доставки
                       .input-wrapper__icon 
                         +search-svg.input-wrapper__svg
-                      input.input.input--icon(type='text' placeholder = 'Введите название...' required)
+                      input.input.input--icon(type='text' placeholder = 'Введите название...' required data-search-input='')
+                      .city-drop
+                        each item in ['Москва', 'Зеленоград, Москва', 'Воронеж']
+                          .city-drop__item(data-search-item='')
+                            |#{item}
+                        .city-drop__item.hidden(data-search-empty='')
+                          |Ничего не найдено...
                     .checkout-page__offset
                       .checkout-page__grid.big 
                         .radio

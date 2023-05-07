@@ -10,6 +10,7 @@ import "./scripts/catalog-filters";
 import "./scripts/select";
 import "./scripts/counter";
 import "./scripts/fancybox";
+import "./scripts/search";
 import mask from "inputmask";
 
 // phone mask

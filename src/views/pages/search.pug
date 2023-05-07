@@ -1,0 +1,42 @@
+extends ../app
+
+include ../components/card
+include ../components/about
+include ../components/catalog-menu
+
+
+block content
+  .catalog-page
+    section.section.section--first
+      .container 
+        .section__row.section__row--alt
+          .section__col
+            ul.nav 
+              each title in ['Верхняя одежда', 'Пиджаки', 'Жилеты', 'Брюки', 'Джемперы', 'Футболки и поло']
+                li.nav__item
+                  .accordion(data-accordion='' data-catalog-accordion='')
+                    .accordion__head(data-accordion-button='')
+                      .accordion__title 
+                        |#{title}
+                      .accordion__icon 
+                        .accordion__plus 
+                    .accordion__body(data-accordion-dropdown='')
+                      ul.accordion__list
+                        each item in ['Пальто', 'Куртки', 'Ветровки', 'Плащи']
+                          li.accordion__item 
+                            a.accordion__link(href="#")
+                              |#{item}
+          .section__col
+            +breadcrumbs(page='Поиск')
+            .catalog-page__top 
+              h1.title 
+                |Поиск
+            .catalog-page__search
+              .catalog-page__search-col
+                input.input.input--alt(type='text' required)
+              .catalog-page__search-col
+                +button.button--wide 
+                  |Искать
+  
+block catalog-menu
+  +catalog-menu
