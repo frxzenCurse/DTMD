@@ -20,11 +20,22 @@ mixin header
           .header__col
             a.header__logo(href="#")
               +logo-svg.header__logo-svg 
-            a.header__catalog(href="#")
-              .header__icon 
+            .header__catalog(data-header-catalog='')
+              .header__icon
+                +header-close-svg.header__catalog-svg
                 +catalog-svg.header__svg
               .header__catalog-text 
                 |Каталог товаров 
+              .header__catalog-dropdown
+                each item, i in ['Каталог', 'Новинки', 'Распродажа', 'Special']
+                  a.header__catalog-link(href="#")
+                    .header__catalog-wrapper 
+                      .header__catalog-img 
+                        img(src=`assets/images/catalog-${i+1}.jpg`, alt="")
+                      .header__catalog-caption 
+                        |#{item}
+                    .header__catalog-icon
+                      +arrow-svg.header__catalog-arrow
           .header__col
             ul.header__list
               each item in ['О бренде', 'Доставка и возврат', 'Контакты']

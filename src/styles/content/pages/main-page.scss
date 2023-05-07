@@ -237,6 +237,9 @@
       }
     }
   }
+  &__catalog-slider {
+    overflow: hidden;
+  }
 
   &__new {
     margin-top: rem(170px);

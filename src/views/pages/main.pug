@@ -63,7 +63,13 @@ block content
             .main-page__catalog-btn 
               +link
                 |Перейти в каталог
-        .main-page__catalog-grid 
+        .main-page__catalog-slider
+          .swiper-container.swiper-container--slide-width-auto.swiper-container--slide-height-max.swiper-container--visible(data-slider-id='def' data-slider-prev='' data-slider-next='2')
+            .swiper-wrapper
+              - for (i = 0; i < 5; i++)
+                .swiper-slide
+                  +card.card--slide-mobile(img = 'product-1')
+        //- .main-page__catalog-grid 
           +card(img = 'product-1')
           +card(img = 'product-2')
           +card(img = 'product-3' discount = true isActive = true)

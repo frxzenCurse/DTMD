@@ -24,4 +24,16 @@ document.addEventListener('DOMContentLoaded', () => {
     header.classList.toggle('header--menu')
     document.body.classList.toggle('body--hidden')
   }
+
+  const catalogBtn = document.querySelector('[data-header-catalog]')
+  // catalog
+  window.addEventListener('click', event => {
+    const target = event.target.closest('[data-header-catalog]')
+
+    if (target) {
+      catalogBtn.classList.toggle('active')
+    } else {
+      catalogBtn.classList.remove('active')
+    }
+  })
 })

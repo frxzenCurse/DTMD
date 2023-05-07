@@ -20,6 +20,8 @@
 
   &__text {
     margin-right: rem(10px);
+
+    white-space: nowrap;
     @include fsl(14px, 130%);
   }
 

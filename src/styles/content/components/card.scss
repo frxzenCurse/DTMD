@@ -35,6 +35,12 @@
     }
   }
 
+  &--slide-mobile {
+    @media #{media("<")} {
+      width: rem(170px);
+    }
+  }
+
   &:hover {
     @media #{media(">")} {
       #{$comp}__hover {
