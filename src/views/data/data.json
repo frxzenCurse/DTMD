@@ -65,6 +65,10 @@
     {
       "href": "cart",
       "title": "Корзина"
+    },
+    {
+      "href": "search",
+      "title": "Поиск"
     }
   ]
 }
