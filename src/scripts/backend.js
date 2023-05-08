@@ -19,10 +19,12 @@ $(() => {
   selectLocation();
   dataFormAppend();
   cdekDeliveryInfo();
+  closeOutFocus();
 });
 
 function cdekDeliveryInfo() {
   $(document).on('click', '[data-cdek-delivery-info]', function() {
+    return;
     const thisObj = $(this),
       data = {
         'CITY_TO': thisObj.data('value'),
@@ -61,15 +63,40 @@ function selectLocation() {
   });
 }
 
+$(document).on('click', '[data-append-input-val]', function () {
+  $('[data-type=geo]').val($(this).text());
+});
+
+function closeOutFocus(elem) {
+  if (elem.length) {
+    const id = elem.data('close-id');
+
+    $(document).on('click', e => {
+      if (!e.target.closest(`[data-close-id=${id}]`)) {
+        elem.removeClass('active');
+      }
+    });
+  }
+}
+
 function geo() {
+  closeOutFocus($('[data-container=geo]'));
+
   $(document).on('input', '[data-type=geo]', function() {
     const thisObj = $(this),
-      data = {
+      geoContainer = thisObj.closest('[data-container=geo]'),
+      val = thisObj.val();
+
+
+    if (val) {
+      geoContainer.addClass('active');
+
+      const data = {
         version: 2,
         PAGE_SIZE: thisObj.data('page-size'),
         PAGE: 0,
         filter: {
-          '=PHRASE': thisObj.val(),
+          '=PHRASE': val,
           '=NAME.LANGUAGE_ID': thisObj.data('lang-id'),
           '=SITE_ID': thisObj.data('site-id'),
         },
@@ -84,26 +111,37 @@ function geo() {
         },
       };
 
-    $.ajax({
-      type: 'POST',
-      url: '/bitrix/components/bitrix/sale.location.selector.search/get.php',
-      data: data,
-      success: r => {
-        try {
-          r = JSON.parse(r.replace(/\'/g,'"'));
-        } catch (e) {
-          console.log(e.message);
-        }
+      $.ajax({
+        type: 'POST',
+        url: '/bitrix/components/bitrix/sale.location.selector.search/get.php',
+        data: data,
+        success: r => {
+          try {
+            r = JSON.parse(r.replace(/\'/g,'"'));
+          } catch (e) {
+            console.log(e.message);
+          }
 
-        const container = $('[data-container=geo-list]');
+          const container = $('[data-container=geo-list]'),
+            items = container.find('[data-container=get-list-items]'),
+            empty = container.find('[data-search-not-found]');
 
-        container.empty();
+          items.empty();
 
-        $.each(r.data.ITEMS, (i, item) => {
-          container.append(`<li><a style="cursor: pointer;" data-form-append data-cdek-delivery-info data-field="LOCATION" data-value="${item.DISPLAY}">${item.DISPLAY}</a></li>`);
-        });
-      },
-    });
+          if (r.data.ITEMS) {
+            $.each(r.data.ITEMS, (i, item) => {
+              items.append(`<div class="city-drop__item" data-append-input-val data-form-append data-cdek-delivery-info data-field="LOCATION" data-value="${item.DISPLAY}">${item.DISPLAY}</div>`);
+            });
+
+            empty.addClass('hidden');
+          } else {
+            empty.removeClass('hidden');
+          }
+        },
+      });
+    } else {
+      geoContainer.removeClass('active');
+    }
   });
 }
 
