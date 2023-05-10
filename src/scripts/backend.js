@@ -19,15 +19,60 @@ $(() => {
   selectLocation();
   dataFormAppend();
   cdekDeliveryInfo();
-  closeOutFocus();
+  dependentElem();
+  orderRefresh();
+  changePayment();
 });
+
+function changePayment() {
+  $(document).on('click', '[data-type=change-payment]', function() {
+    $.ajax({
+      type: 'POST',
+      url: '/bitrix/components/bitrix/sale.order.payment.change/ajax.php',
+      data: {
+        accountNumber: $('[data-account-number]').val(),
+        paymentNumber: $('[data-payment-number]').val(),
+        sessid: $('[data-sessid]').val(),
+        paySystemId: $('input:checked[data-payment]').val(),
+        inner: 'N',
+        refreshPrices: 'Y',
+        onlyInnerFull: 'N',
+      },
+      success: () => {
+        $.ajax({
+          type: 'get',
+          url: window.location.href,
+          success: r => {
+            replace(r);
+          },
+        });
+      },
+    });
+  });
+}
+
+function dependentElem() {
+  $(document).on('change', '[data-type=dependent-elem]', function() {
+    console.log('change');
+    const thisObj = $(this),
+      id = thisObj.data('id');
+
+    $('[data-link-id]').css('display', 'none');
+
+    if (id) {
+      $(`[data-link-id=${id}]`).css('display', 'block');
+    }
+  });
+}
 
 function cdekDeliveryInfo() {
   $(document).on('click', '[data-cdek-delivery-info]', function() {
-    return;
     const thisObj = $(this),
       data = {
         'CITY_TO': thisObj.data('value'),
+        'DELIVERY': 30,
+        'isdek_action': 'countDelivery',
+        'isdek_token': $('[data-type=sdek-token]').val(),
       };
 
     $.ajax({
@@ -52,7 +97,7 @@ function dataFormAppend() {
     if (elem.length) {
       elem.val(val);
     } else {
-      form.append(`<input type="hidden" data-field="${field}" value="${val}">`);
+      form.append(`<input type="hidden" data-type="get-field" data-field="${field}" value="${val}">`);
     }
   });
 }
@@ -65,6 +110,7 @@ function selectLocation() {
 
 $(document).on('click', '[data-append-input-val]', function () {
   $('[data-type=geo]').val($(this).text());
+  $('[data-container=geo]').removeClass('active');
 });
 
 function closeOutFocus(elem) {
@@ -77,6 +123,22 @@ function closeOutFocus(elem) {
       }
     });
   }
+}
+
+function orderRefresh() {
+  $(document).on('click', '[data-order-refresh-event]', function () {
+    const thisObj = $(this),
+      data = thisObj.data('order-refresh');
+
+    $.ajax({
+      type: 'POST',
+      url: window.location.href,
+      data: data,
+      success: r => {
+        replace(r);
+      },
+    });
+  });
 }
 
 function geo() {
@@ -130,7 +192,7 @@ function geo() {
 
           if (r.data.ITEMS) {
             $.each(r.data.ITEMS, (i, item) => {
-              items.append(`<div class="city-drop__item" data-append-input-val data-form-append data-cdek-delivery-info data-field="LOCATION" data-value="${item.DISPLAY}">${item.DISPLAY}</div>`);
+              items.append(`<div class="city-drop__item" data-append-input-val data-order-refresh-event data-order-refresh='{"location": "${item.CODE}", "ajax": "delivery"}' data-form-append data-cdek-delivery-info data-field="LOCATION" data-value="${item.DISPLAY}">${item.DISPLAY}</div>`);
             });
 
             empty.addClass('hidden');
@@ -173,6 +235,31 @@ window.objFormErrors = {
   },
 }
 
+window.forms = {
+  getData: {
+    base: (data, file, elem) => {
+      file ? data.append(elem.data('field'), elem.val()) : data[elem.data('field')] = elem.val();
+    },
+    dependentElem: (data, file, elem) => {
+      const link = elem.closest('form').find(`[data-link-id=${elem.data('id')}]`).find('[data-field]');
+
+      let linkVal = link.val();
+
+      if (!linkVal) {
+        linkVal = link.text();
+      }
+
+      if (file) {
+        data.append(elem.data('field'), elem.val());
+        data.append(link.data('field'), linkVal);
+      } else {
+        data[elem.data('field')] = elem.val();
+        data[link.data('field')] = linkVal;
+      }
+    }
+  }
+}
+
 function forms() {
   $(document).on('submit', '[data-type=form-backend]', function(e) {
     e.preventDefault();
@@ -192,9 +279,9 @@ function forms() {
         return;
       }
 
-      const field = $(this).attr('data-field');
+      const getType = $(this).data('get-type');
 
-      file.length ? data.append(field, val) : data[field] = val;
+      window.forms.getData[getType ? getType : 'base'](data, file.length, $(this));
     });
 
     $.each(file, (i, item) => {
@@ -265,9 +352,12 @@ function pagen() {
 
 function selectEventAjax() {
   $('[data-ajax-event]').on('change', function() {
+    const thisObj = $(this),
+      url = thisObj.data('url');
+
     $.ajax({
       type: 'GET',
-      url: window.location.href,
+      url: url ? url : window.location.href,
       dataType: 'html',
       data: JSON.parse($(this).val()),
       success: function(r) {
