@@ -469,7 +469,13 @@ window.ajaxCallable = {
     const counterElem = $(counterSelector);
 
     counterElem.text(adding ? +counterElem.text() + 1 : +counterElem.text() - 1);
-  }
+  },
+  reload: () => {
+    location.reload();
+  },
+  redirect: elem => {
+    window.location.href = elem.data('redirect');
+  },
 }
 
 function clickEventAjax() {
