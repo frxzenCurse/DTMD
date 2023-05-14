@@ -22,7 +22,15 @@ $(() => {
   dependentElem();
   orderRefresh();
   changePayment();
+  displayBlock();
 });
+
+function displayBlock() {
+  $(document).on('click', '[data-type=display-block]', function() {
+    const thisObj = $(this)
+
+  });
+}
 
 function changePayment() {
   $(document).on('click', '[data-type=change-payment]', function() {
