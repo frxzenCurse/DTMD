@@ -8,7 +8,7 @@ mixin catalog-menu
     .catalog-menu__container
       ul.catalog-menu__list 
         each item in ['Верхняя одежда', 'Пиджаки', 'Жилеты', 'Брюки', 'Джемперы', ]
-          li.catalog-menu__item(data-accordion='')
+          li.catalog-menu__item(data-accordion='' data-catalog-accordion='')
             .catalog-menu__button(data-accordion-button='')
               .catalog-menu__text 
                 |#{item}
