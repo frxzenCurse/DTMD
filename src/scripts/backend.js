@@ -27,13 +27,19 @@ $(() => {
 
 function displayBlock() {
   $(document).on('click', '[data-type=display-block]', function() {
-    const thisObj = $(this)
+    const thisObj = $(this),
+      elem = $(thisObj.data('selector'));
 
+    if (elem.css('display') === 'none') {
+      elem.fadeIn();
+    } else {
+      elem.fadeOut();
+    }
   });
 }
 
 function changePayment() {
-  $(document).on('click', '[data-type=change-payment]', function() {
+  $(document).on('change', '[data-type=change-payment]', function() {
     $.ajax({
       type: 'POST',
       url: '/bitrix/components/bitrix/sale.order.payment.change/ajax.php',
@@ -41,7 +47,7 @@ function changePayment() {
         accountNumber: $('[data-account-number]').val(),
         paymentNumber: $('[data-payment-number]').val(),
         sessid: $('[data-sessid]').val(),
-        paySystemId: $('input:checked[data-payment]').val(),
+        paySystemId: $(this).val(),
         inner: 'N',
         refreshPrices: 'Y',
         onlyInnerFull: 'N',
