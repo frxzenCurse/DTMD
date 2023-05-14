@@ -27,15 +27,38 @@ mixin header
               .header__catalog-text 
                 |Каталог товаров 
               .header__catalog-dropdown
-                each item, i in ['Каталог', 'Новинки', 'Распродажа', 'Special']
-                  a.header__catalog-link(href="#")
-                    .header__catalog-wrapper 
-                      .header__catalog-img 
-                        img(src=`assets/images/catalog-${i+1}.jpg`, alt="")
-                      .header__catalog-caption 
-                        |#{item}
-                    .header__catalog-icon
-                      +arrow-svg.header__catalog-arrow
+                a.header__catalog-link(href="#")
+                  .header__catalog-wrapper 
+                    .header__catalog-img 
+                      +header-1-svg
+                    .header__catalog-caption 
+                      |Каталог
+                  .header__catalog-icon
+                    +arrow-svg.header__catalog-arrow
+                a.header__catalog-link(href="#")
+                  .header__catalog-wrapper 
+                    .header__catalog-img 
+                      +header-2-svg
+                    .header__catalog-caption 
+                      |Новинки
+                  .header__catalog-icon
+                    +arrow-svg.header__catalog-arrow
+                a.header__catalog-link(href="#")
+                  .header__catalog-wrapper 
+                    .header__catalog-img 
+                      +header-3-svg
+                    .header__catalog-caption 
+                      |Распродажа
+                  .header__catalog-icon
+                    +arrow-svg.header__catalog-arrow
+                a.header__catalog-link(href="#")
+                  .header__catalog-wrapper 
+                    .header__catalog-img 
+                      +header-4-svg
+                    .header__catalog-caption 
+                      |Special
+                  .header__catalog-icon
+                    +arrow-svg.header__catalog-arrow
           .header__col
             ul.header__list
               each item in ['О бренде', 'Доставка и возврат', 'Контакты']

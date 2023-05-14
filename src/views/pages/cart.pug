@@ -81,6 +81,14 @@ block content
             .only-mobile 
               .cart-page__promo
                 .cart-page__promo-title 
+                  |Промокод для скидки:
+                form.cart-page__promo-form(action="")
+                  input.input(type='text' placeholder = 'Введите промокод' required)
+                  .cart-page__promo-btn 
+                    +button.button--wide 
+                      |Применить
+              //- .cart-page__promo
+                .cart-page__promo-title 
                   |Промокод
                 a.cart-page__promo-link(href="#") 
                   |Есть промокод?
