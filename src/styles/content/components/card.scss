@@ -4,8 +4,10 @@
   display: block;
 
   &--slide {
+    margin-right: rem(30px);
     width: rem(160px);
     @media #{media("<")} {
+      margin-right: rem(6px);
       width: rem(170px);
     }
 
@@ -36,7 +38,10 @@
   }
 
   &--slide-mobile {
+    margin-right: rem(30px);
+    width: rem(255px);
     @media #{media("<")} {
+      margin-right: rem(6px);
       width: rem(170px);
     }
   }

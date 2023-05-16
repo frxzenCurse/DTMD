@@ -111,6 +111,11 @@ export function swiperInit() {
               }
             };
             break;
+          case 'none':
+            slider_options = {
+              slidesPerView:  'auto',
+            }
+            break;
         case 2:
           slider_options = {
             ...slider_options,
