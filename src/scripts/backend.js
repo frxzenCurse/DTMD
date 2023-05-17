@@ -206,7 +206,7 @@ function geo() {
 
           if (r.data.ITEMS) {
             $.each(r.data.ITEMS, (i, item) => {
-              items.append(`<div class="city-drop__item" data-append-input-val data-order-refresh-event data-order-refresh='{"location": "${item.CODE}", "ajax": "delivery"}' data-form-append data-cdek-delivery-info data-field="LOCATION" data-value="${item.DISPLAY}">${item.DISPLAY}</div>`);
+              items.append(`<div class="city-drop__item" data-append-input-val data-order-refresh-event data-order-refresh='{"location": "${item.CODE}", "ajax": "delivery"}' data-form-append data-cdek-delivery-info data-field="location" data-value="${item.CODE}">${item.DISPLAY}</div>`);
             });
 
             empty.addClass('hidden');
@@ -247,6 +247,15 @@ window.objFormErrors = {
   view: (form, r) => {
     form.find('[data-error]').html(r.message);
   },
+  order: (form, r) => {
+    let message = '';
+
+    for (let i in r.message) {
+      message += r.message[i] + ';';
+    }
+
+    alert(message);
+  }
 }
 
 window.forms = {
@@ -255,21 +264,31 @@ window.forms = {
       file ? data.append(elem.data('field'), elem.val()) : data[elem.data('field')] = elem.val();
     },
     dependentElem: (data, file, elem) => {
-      const link = elem.closest('form').find(`[data-link-id=${elem.data('id')}]`).find('[data-field]');
-
-      let linkVal = link.val();
-
-      if (!linkVal) {
-        linkVal = link.text();
-      }
-
       if (file) {
         data.append(elem.data('field'), elem.val());
-        data.append(link.data('field'), linkVal);
       } else {
         data[elem.data('field')] = elem.val();
-        data[link.data('field')] = linkVal;
       }
+
+      elem.closest('form').find(`[data-link-id=${elem.data('id')}]`).find('[data-field]').each((i, item) => {
+        const jqObj = $(item);
+
+        let linkVal = jqObj.data('val');
+
+        if (!linkVal) {
+          linkVal = jqObj.val();
+        }
+
+        if (!linkVal) {
+          linkVal = jqObj.text();
+        }
+
+        if (file) {
+          data.append(jqObj.data('field'), linkVal);
+        } else {
+          data[jqObj.data('field')] = linkVal;
+        }
+      });
     }
   }
 }
