@@ -23,7 +23,33 @@ $(() => {
   orderRefresh();
   changePayment();
   displayBlock();
+  // cdekWidget();
 });
+
+function cdekWidget() {
+  window.cdekWidjet = new ISDEKWidjet({
+    mode: 'pvz',
+    showWarns: true,
+    showErrors: true,
+    showLogs: true,
+    popup: true,
+    country: 'Россия',
+    defaultCity: document.querySelector('[data-city-val]').value,
+    cityFrom: 'Москва',
+    hidedress: true,
+    hidecash: true,
+    hidedelt: true,
+  });
+
+  window.cdekWidjet.binders.add(choosePVZ, 'onChoose');
+
+  function choosePVZ(e) {
+    const elem = document.querySelector('[data-type=pvz-addr]');
+
+    elem.setAttribute('data-val', `${e.PVZ.Address} #S${e.id}`);
+    elem.textContent = e.PVZ.Address;
+  }
+}
 
 function displayBlock() {
   $(document).on('click', '[data-type=display-block]', function() {
