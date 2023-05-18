@@ -548,7 +548,7 @@ window.ajaxCallable = {
 }
 
 function clickEventAjax() {
-  $('[data-ajax-event-click]').on('click', function(e) {
+  $(document).on('click', '[data-ajax-event-click]', function(e) {
     e.preventDefault();
 
     const thisObj = $(this),
