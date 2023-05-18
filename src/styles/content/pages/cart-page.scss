@@ -124,6 +124,12 @@
     margin-right: rem(30px);
     font-weight: 700;
   }
+  &__product-old {
+    margin-bottom: rem(5px);
+    font-weight: 400;
+
+    text-decoration: line-through;
+  }
   &__product-icon {
     display: flex;
     align-items: center;
@@ -217,4 +223,13 @@
     font-weight: 500;
     @include fsl(12px);
   }
+}
+
+.span-old {
+  margin-left: rem(3px);
+
+  display: inline-block;
+
+  font-weight: 400;
+  text-decoration: line-through;
 }
