@@ -29,7 +29,7 @@ block content
                             |Количество: #[span 1 шт.]
                         .cart-page__product-item.mobile 
                           .cart-page__product-text 
-                            |Цена: #[span 7 800 руб.]
+                            |Цена: #[span 7 800 руб. #[.span-old 8 800 руб]]
                     .cart-page__product-col
                       .cart-page__product-counter 
                         .counter(data-counter='1')
@@ -40,6 +40,8 @@ block content
                           button.counter__btn(data-count-plus='')
                             +plus-svg.counter__svg
                       .cart-page__product-price 
+                        .cart-page__product-old 
+                          |4 900 руб.
                         |3 900 руб.
                       .cart-page__product-icon 
                         +trash-svg.cart-page__product-svg
@@ -58,6 +60,8 @@ block content
                     .cart-page__card-label 
                       |Товаров на:
                     .cart-page__card-text 
+                      .cart-page__product-old 
+                        |4 900 руб.
                       |7 800 руб.
                   .cart-page__card-item 
                     .cart-page__card-label 
@@ -69,6 +73,8 @@ block content
                       .cart-page__card-label 
                         |Итого:
                       .cart-page__card-text 
+                        .cart-page__product-old 
+                          |4 900 руб.
                         |7 800 руб.
               .cart-page__promo
                 .cart-page__promo-title 
@@ -98,6 +104,8 @@ block content
                     .cart-page__card-label 
                       |Товаров на:
                     .cart-page__card-text 
+                      .cart-page__product-old 
+                        |4 900 руб.
                       |7 800 руб.
                   .cart-page__card-item 
                     .cart-page__card-label 
@@ -108,7 +116,9 @@ block content
                     .cart-page__card-item 
                       .cart-page__card-label 
                         |Итого:
-                      .cart-page__card-text 
+                      .cart-page__card-text
+                        .cart-page__product-old 
+                          |4 900 руб. 
                         |7 800 руб.
                     .cart-page__card-btn 
                       +button.button--wide 
