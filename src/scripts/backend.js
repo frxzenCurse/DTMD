@@ -535,6 +535,16 @@ window.ajaxCallable = {
   redirect: elem => {
     window.location.href = elem.data('redirect');
   },
+  reloadAjax: () => {
+    $.ajax({
+      type: 'GET',
+      url: window.location.href,
+      dataType: 'html',
+      success: function(r) {
+        replace(r);
+      },
+    });
+  },
 }
 
 function clickEventAjax() {
