@@ -23,7 +23,7 @@ $(() => {
   orderRefresh();
   changePayment();
   displayBlock();
-  // cdekWidget();
+  cdekWidget();
 });
 
 function cdekWidget() {
@@ -176,6 +176,8 @@ function orderRefresh() {
       data: data,
       success: r => {
         replace(r);
+
+        window.cdekWidjet.city.set(thisObj.text());
       },
     });
   });
