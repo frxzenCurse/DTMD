@@ -278,9 +278,9 @@ window.objFormErrors = {
   order: (form, r) => {
     let message = '';
 
-    for (let i in r.message) {
-      message += r.message[i] + ';';
-    }
+    r.message.forEach(item => {
+      message += item.message + ';';
+    });
 
     alert(message);
   }
