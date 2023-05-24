@@ -72,6 +72,7 @@ $colors: (
   gray-light: #F5F5F5,
   gray-light-alt: #EAEAEA,
   gray-bg: #F1F1F1,
+  error: #e33,
 );
 @function color($variant: black) {
   @return map.get($colors, $variant);

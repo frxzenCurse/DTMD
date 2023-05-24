@@ -25,7 +25,7 @@
   &__icon {
     position: absolute;
     left: rem(20px);
-    bottom: rem(15px);
+    top: rem(45px);
     z-index: 1;
 
     display: flex;
@@ -60,6 +60,10 @@
 
   &--alt {
     height: 100%;
+  }
+
+  &.parsley-error {
+    border-color: color(error);
   }
 }
 
@@ -297,4 +301,17 @@
       }
     }
   }
+}
+
+.parsley-errors-list {
+  margin-top: rem(6px);
+  // position: absolute;
+  // top: calc(100% + #{rem(4px)});
+  @media #{media("<")} {
+    position: static;
+    margin-top: rem(3px);
+  }
+  font-weight: 500;
+  @include fsl(11px, 100%);
+  color: color(error);
 }

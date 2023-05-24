@@ -1,18 +1,4 @@
-// function accordionDropdown(e, root) {
-//   const accordion = $(root)
-//   const target = $(e.target)
-
-//   if (target.closest('[data-accordion-button]').length) {
-//     target.closest(accordion).toggleClass('active');
-//     target.closest(accordion).find('[data-accordion-dropdown]').eq(0).slideToggle()
-//   }
-// }
-
-// $(() => {
-//   window.addEventListener('click', (e) => {
-//     accordionDropdown(e, '[data-accordion]')
-//   })
-// })
+import { mediaQuery } from './mediaQueries';
 
 document.addEventListener('DOMContentLoaded', () => {
   const accordions = document.querySelectorAll('[data-accordion]')
@@ -36,4 +22,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     }
   })
+  // card page
+  const cardAccordions = document.querySelector('[data-card-accordions]')
+
+  if (cardAccordions && !mediaQuery.matches) {
+    const items = cardAccordions.querySelectorAll('[data-accordion]')
+
+    items.forEach(item => {
+      const drop = item.querySelector('[data-accordion-dropdown]')
+      
+      item.classList.remove('active')
+      $(drop).slideUp()
+    })
+  }
 })
+
