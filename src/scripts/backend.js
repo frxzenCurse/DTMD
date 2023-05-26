@@ -276,13 +276,15 @@ window.objFormErrors = {
     form.find('[data-error]').html(r.message);
   },
   order: (form, r) => {
+    const errorElem = $('[data-container=error]');
     let message = '';
 
     r.message.forEach(item => {
-      message += item.message + ';';
+      message += item.message + '<br>';
     });
 
-    alert(message);
+    errorElem.html(message);
+    errorElem.css('display', 'block');
   }
 }
 
