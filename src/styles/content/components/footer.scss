@@ -177,10 +177,7 @@
     padding-bottom: rem(40px);
     @media #{media("<")} {
       padding-bottom: rem(20px);
-
-      width: auto;
     }
-    width: rem(170px);
   }
   &__pay-img {
     display: block;
@@ -210,11 +207,12 @@
       &:nth-child(3) {
         width: 89px;
       }
+      &:nth-child(4) {
+        width: 63px;
+      }
 
       &:not(:first-child) {
-        @media #{media("<")} {
-          margin-left: rem(10px);
-        }
+        margin-left: rem(10px);
       }
     }
   }
