@@ -256,6 +256,9 @@ window.objFormSuccess = {
   redirectAnswer: (form, r) => {
     window.location.href = form.data('redirect') + r.id + '/';
   },
+  redirectServer: (form, r) => {
+    window.location.href = r.redirect;
+  },
   reload: () => {
     $.ajax({
       type: 'GET',
@@ -276,12 +279,16 @@ window.objFormErrors = {
     form.find('[data-error]').html(r.message);
   },
   order: (form, r) => {
-    const errorElem = $('[data-container=error]');
+    const errorElem = form.find('[data-container=error]');
     let message = '';
 
-    r.message.forEach(item => {
-      message += item.message + '<br>';
-    });
+    if (typeof r.message === 'string') {
+      message += r.message;
+    } else {
+      r.message.forEach(item => {
+        message += item.message + '<br>';
+      });
+    }
 
     errorElem.html(message);
     errorElem.css('display', 'block');
