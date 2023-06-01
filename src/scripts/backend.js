@@ -93,14 +93,18 @@ function changePayment() {
 
 function dependentElem() {
   $(document).on('change', '[data-type=dependent-elem]', function() {
-    console.log('change');
     const thisObj = $(this),
-      id = thisObj.data('id');
+      id = thisObj.data('id'),
+      linkElems = $('[data-link-id]');
 
-    $('[data-link-id]').css('display', 'none');
+    linkElems.css('display', 'none');
+    linkElems.find('input').removeAttr('required');
 
     if (id) {
-      $(`[data-link-id=${id}]`).css('display', 'block');
+      const linkElem = $(`[data-link-id=${id}]`);
+
+      linkElem.css('display', 'block');
+      linkElem.find('input').attr('required', 'required');
     }
   });
 }
