@@ -153,7 +153,7 @@ function selectLocation() {
 }
 
 $(document).on('click', '[data-append-input-val]', function () {
-  $('[data-type=geo]').val($(this).text());
+  $('[data-geo]').val($(this).text());
   $('[data-container=geo]').removeClass('active');
 });
 
@@ -190,7 +190,7 @@ function orderRefresh() {
 function geo() {
   closeOutFocus($('[data-container=geo]'));
 
-  $(document).on('input', '[data-type=geo]', function() {
+  $(document).on('input', '[data-geo]', function() {
     const thisObj = $(this),
       geoContainer = thisObj.closest('[data-container=geo]'),
       val = thisObj.val();
