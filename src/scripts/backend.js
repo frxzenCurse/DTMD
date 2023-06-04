@@ -280,7 +280,16 @@ window.objFormErrors = {
     alert(r.message);
   },
   view: (form, r) => {
-    form.find('[data-error]').html(r.message);
+    const errorElem = form.find('[data-error]');
+
+    if (!errorElem.length) {
+      alert(r.message);
+
+      return;
+    }
+
+    errorElem.css('display', 'block');
+    errorElem.html(r.message);
   },
   order: (form, r) => {
     const errorElem = form.find('[data-container=error]');
@@ -296,7 +305,22 @@ window.objFormErrors = {
 
     errorElem.html(message);
     errorElem.css('display', 'block');
-  }
+  },
+  register: (form, r) => {
+    window.objFormErrors.view(form, r);
+
+    $.ajax({
+      type: 'GET',
+      url: window.location.href,
+      dataType: 'html',
+      data: {
+        ajax: 'captcha-reload',
+      },
+      success: function(r) {
+        replace(r);
+      },
+    });
+  },
 }
 
 window.forms = {
