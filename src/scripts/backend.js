@@ -39,6 +39,15 @@ function cdekWidget() {
     hidedress: true,
     hidecash: true,
     hidedelt: true,
+    onReady: () => {
+      const geo = $('[data-geo]').val();
+
+      if (geo) {
+        window.cdekWidjet.city.set(geo);
+      }
+
+      window.cdekWidjet.ready = true;
+    }
   });
 
   window.cdekWidjet.binders.add(choosePVZ, 'onChoose');
@@ -181,7 +190,9 @@ function orderRefresh() {
       success: r => {
         replace(r);
 
-        window.cdekWidjet.city.set(thisObj.text());
+        if (window.cdekWidjet.ready) {
+          window.cdekWidjet.city.set(thisObj.text());
+        }
       },
     });
   });
