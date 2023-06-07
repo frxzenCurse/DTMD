@@ -98,6 +98,10 @@ export function swiperInit() {
                 el: `[data-swiper-pagination="${slider_id}"]`,
                 type: 'bullets',
               },
+              navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+              },
               on: {
                 slideChange: function(swiper) {
                   const index = swiper.realIndex

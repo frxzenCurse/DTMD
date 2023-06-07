@@ -62,6 +62,13 @@
   }
 }
 
+.photo-modal {
+  
+  &__img {
+    display: block;
+  }
+}
+
 /* Custom animation slide-in-out */
 .fancybox-fx-right.fancybox-slide--previous {
   transform: translateX(100%);

@@ -21,3 +21,7 @@ mixin size-modal
         each item in ['78-82', '82-86', '	86-90', '90-94', '94-98', '98-102', '102-106', '106-110', '	110-114', '114-118', ]
           .modal__item 
             |#{item}
+
+mixin photo-modal
+  .photo-modal(data-fancy-modal="photo")
+    img.photo-modal__img(src="", alt="")

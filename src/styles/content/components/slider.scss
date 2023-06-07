@@ -31,6 +31,9 @@
     }
 
     &:nth-child(2) {
+      position: relative;
+      z-index: 0;
+      
       width: 100%;
       // width: rem(380px);
       @media #{media("<")} {
