@@ -57,6 +57,7 @@
   }
 
   &__slide {
+    display: block;
     width: 100%;
     height: rem(504px);
     @media #{media("<", m)} {
