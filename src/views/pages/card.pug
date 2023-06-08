@@ -52,16 +52,16 @@ block content
                       .swiper-wrapper
                         - for (i = 0; i < 3; i++)
                           .swiper-slide
-                            .slider__slide(data-photo-btn='')
+                            a.slider__slide(data-src='assets/images/sick.jpg' data-fancybox='gallery')
                               img.slider__img(src="assets/images/sick.jpg", alt="")
                           .swiper-slide
-                            .slider__slide(data-photo-btn='')
+                            a.slider__slide(data-src='assets/images/product-1.jpg' data-fancybox='gallery')
                               img.slider__img(src="assets/images/product-1.jpg", alt="")
                           .swiper-slide
-                            .slider__slide(data-photo-btn='')
+                            a.slider__slide(data-src='assets/images/product-2.jpg' data-fancybox='gallery')
                               img.slider__img(src="assets/images/product-2.jpg", alt="")
                           .swiper-slide
-                            .slider__slide(data-photo-btn='')
+                            a.slider__slide(data-src='assets/images/product-3.jpg' data-fancybox='gallery')
                               img.slider__img(src="assets/images/product-3.jpg", alt="")
               .only-desktop 
                 .card-page__features
@@ -139,7 +139,7 @@ block content
                 .card-page__top 
                   .card-page__prop 
                     |Размер: #[span M]
-                  .card-page__link(data-fancy-button='sizes')
+                  .card-page__link(data-modal-button='sizes')
                     |Таблица размеров
                 .card-page__select 
                   +select(placeholder = 'Выберите размер' options=['qwe', 'asd', 'zxc', 'qwe1', 'asd2', 'zxc3', '32', '44', '55'])
@@ -305,4 +305,3 @@ block content
               .card-page__bot-text 
                 |Как сделать возврат?
   +size-modal
-  +photo-modal

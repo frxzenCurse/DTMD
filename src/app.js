@@ -14,6 +14,8 @@ import "./scripts/search";
 import "./scripts/form-validation";
 import "./scripts/photo-modal";
 import mask from "inputmask";
+import { Fancybox } from "@fancyapps/ui";
+import "@fancyapps/ui/dist/fancybox/fancybox.css";
 
 // phone mask
 {
@@ -21,5 +23,9 @@ import mask from "inputmask";
     Inputmask({ mask: "+7 (999) 999-99-99", showMaskOnHover: false }).mask(
       "[data-mask-phone]"
     )
+
+    Fancybox.bind('[data-fancybox="gallery"]', {
+      //
+    });
   })
 }

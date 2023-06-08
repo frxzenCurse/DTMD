@@ -1,22 +1,62 @@
 
 .modal {
-  position: absolute;
-  right: 0;
-  top: 0;
-  @media #{media("<")} {
-    bottom: 0;
-    top: auto;
+  $comp: &;
 
-    width: 100%;
-    height: auto;
-    min-height: 75vh;
-  }
-  display: none;
-  width: rem(600px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+
+  width: 100%;
   height: 100%;
 
-  overflow: visible;
-  background-color: color(white);
+  pointer-events: none;
+
+  &.active {
+    #{$comp}__overlay {
+      opacity: 1;
+      pointer-events: all;
+    }
+    #{$comp}__container {
+      transform: none;
+    }
+  }
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    pointer-events: none;
+    background-color: rgba(24,29,29,.2);
+    opacity: 0;
+    transition: $transition;
+  }
+
+  &__container {
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 121;
+    @media #{media("<")} {
+      bottom: 0;
+      top: auto;
+
+      width: 100%;
+      height: auto;
+      min-height: 75vh;
+    }
+    width: rem(600px);
+    height: 100%;
+
+    pointer-events: all;
+    transform: translateX(120%);
+    transition: $transition;
+    background-color: color(white);
+  }
 
   &__grid {
     display: grid;
@@ -46,13 +86,42 @@
     @include fsl(12px);
   }
 
-  .fancybox-button {
+  &__close {
+    --size: #{rem(44px)};
+    position: absolute;
     right: 100%;
+    top: 0;
+    z-index: 1;
     @media #{media("<")} {
       bottom: 100%;
       right: 0;
       top: auto;
     }
+
+    width: var(--size);
+    height: var(--size);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+    background-color: color(black);
+
+    svg {
+      --size: #{rem(20px)};
+
+      width: var(--size);
+      height: var(--size);
+
+      path {
+        stroke: color(white);
+      }
+    }
+  }
+
+  .fancybox-button {
+    right: 100%;
+    
     opacity: 1;
     background-color: color(black);
 
