@@ -5,6 +5,12 @@
   min-height: 100vh;
   min-width: 320px;
 
+  @media #{media("<")} {
+    position: relative;
+    z-index: 0;
+    overflow-x: hidden;
+  }
+
   &--darken {
     background-color: color(white-alt);
   }

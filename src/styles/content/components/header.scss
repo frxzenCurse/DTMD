@@ -4,7 +4,10 @@
   top: 0;
   left: 0;
   z-index: 777;
-
+  @media #{media("<")} {
+    position: absolute;
+    // overflow-x: hidden;
+  }
   width: 100vw;
 
   border-bottom: 1px solid rgba(color(black), 0.1);
@@ -17,12 +20,15 @@
   }
 
   &--scroll {
-    transform: translateY(rem(-49px));
-    @media #{media("<")} {
-      transform: translateY(rem(-50px));
+    // @media #{media("<")} {
+    //   transform: translateY(rem(-50px));
+    // }
+    @media #{media(">")} {
+      transform: translateY(rem(-49px));
+      background-color: color(white);
+      border-color: rgba(color(black), 0.1);
+      
     }
-    background-color: color(white);
-    border-color: rgba(color(black), 0.1);
   }
   &--menu {
     
