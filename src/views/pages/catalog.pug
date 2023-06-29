@@ -79,8 +79,12 @@ block content
                 .catalog-page__pagi-btn 
                   |Назад
                 ul.catalog-page__list
-                  - for (i = 1; i < 6; i++)
-                    li.catalog-page__item(class=(i === 3 ? 'active' : ''))
+                  li.catalog-page__item
+                    |1
+                  li.catalog-page__item 
+                    |...
+                  - for (i = 4; i < 8; i++)
+                    li.catalog-page__item(class=(i === 4 ? 'active' : ''))
                       |#{i}
                   li.catalog-page__item 
                     |...

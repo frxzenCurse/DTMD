@@ -91,7 +91,7 @@
     cursor: pointer;
 
     &:not(:first-child) {
-      margin-left: rem(43px);
+      margin-left: rem(35px);
       @media #{media("<")} {
         margin-left: rem(20px);
       }
