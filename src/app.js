@@ -8,7 +8,6 @@ import "./scripts/accordion";
 import "./scripts/custom-select";
 import "./scripts/catalog-filters";
 import "./scripts/select";
-import "./scripts/counter";
 import "./scripts/fancybox";
 import "./scripts/search";
 import "./scripts/form-validation";
