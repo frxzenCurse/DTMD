@@ -24,9 +24,83 @@ $(() => {
   changePayment();
   displayBlock();
   cdekWidget();
+  GA4();
 });
 
+function GA4() {
+  window.dataLayer = window.dataLayer || [];
+
+  function viewItemList () {
+    const items = document.querySelector('[data-view-items]');
+
+    if (!items) {
+      return;
+    }
+
+    const data = [];
+
+    $(items).find('[data-view-item]').each((i, item) => {
+      const jqObj = $(item);
+
+      data.push({
+        item_name: jqObj.find('[data-name]').text(),
+        item_id: jqObj.find('[data-id]').val(),
+        price: jqObj.find('[data-price]').text(),
+        item_brand: jqObj.find('[data-brand]').val(),
+        item_category: jqObj.find('[data-category]').val(),
+        item_list_name: 'сatalog',
+        index: i + 1,
+        quantity: 1
+      });
+    });
+
+    dataLayer.push({ ecommerce: null });
+
+    console.log(
+      ({
+      event: 'view_item_list',
+      ecommerce: {
+        item_list_name: 'сatalog',
+        items: data
+      }
+    }));
+  }
+
+  viewItemList();
+
+  $(document).on('click', '[data-ga4-select-item]', function() {
+    let item = $(this).closest('[data-container=item]');
+
+    if (!item.length) {
+      item = $(this);
+    }
+
+    dataLayer.push({ ecommerce: null });
+
+    console.log(dataLayer.push({
+      event: 'select_item',
+      ecommerce: {
+        items: [{
+          item_name: item.find('[data-name]').text(),
+          item_id: item.find('[data-id]').val(),
+          item_brand: item.find('[data-brand]').val(),
+          item_category: item.find('[data-category]').val(),
+          item_list_name: 'catalog',
+          item_list_id: '1',
+          index: 1,
+          quantity: 1,
+          price: item.find('[data-price]').text()
+        }]
+      }
+    }));
+  });
+}
+
 function cdekWidget() {
+  if (!document.querySelector('[data-widjet]')) {
+    return;
+  }
+
   window.cdekWidjet = new ISDEKWidjet({
     mode: 'pvz',
     showWarns: true,
