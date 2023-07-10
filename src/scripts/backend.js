@@ -56,14 +56,23 @@ function GA4() {
 
     dataLayer.push({ ecommerce: null });
 
-    console.log(
-      ({
+    dataLayer.push({
       event: 'view_item_list',
       ecommerce: {
         item_list_name: 'сatalog',
         items: data
       }
-    }));
+    });
+
+
+      console.log(
+      {
+      event: 'view_item_list',
+      ecommerce: {
+        item_list_name: 'сatalog',
+        items: data
+      }
+    });
   }
 
   viewItemList();
@@ -75,24 +84,94 @@ function GA4() {
       item = $(this);
     }
 
+    const scope = item.parent('[data-container]').data('ga4-items-scope');
+
     dataLayer.push({ ecommerce: null });
 
-    console.log(dataLayer.push({
+    dataLayer.push({
       event: 'select_item',
       ecommerce: {
+        item_list_name: scope,
         items: [{
           item_name: item.find('[data-name]').text(),
           item_id: item.find('[data-id]').val(),
           item_brand: item.find('[data-brand]').val(),
           item_category: item.find('[data-category]').val(),
-          item_list_name: 'catalog',
+          item_list_name: scope,
           item_list_id: '1',
-          index: 1,
+          index: item.index() + 1,
           quantity: 1,
           price: item.find('[data-price]').text()
         }]
       }
-    }));
+    });
+
+    console.log({
+      event: 'select_item',
+      ecommerce: {
+        item_list_name: 'сatalog',
+        items: [{
+          item_name: item.find('[data-name]').text(),
+          item_id: item.find('[data-id]').val(),
+          item_brand: item.find('[data-brand]').val(),
+          item_category: item.find('[data-category]').val(),
+          item_list_name: scope,
+          item_list_id: '1',
+          index: item.index() + 1,
+          quantity: 1,
+          price: item.find('[data-price]').text()
+        }]
+      }
+    });
+  });
+
+  $(document).on('click', '[data-ga4-add-to-wishlist]', function() {
+    let item = $(this).closest('[data-container=item]');
+
+    if (!item.length) {
+      item = $(this);
+    }
+
+    const price = item.find('[data-price]').text(),
+      scope = item.parent('[data-container]').data('ga4-items-scope');
+
+    dataLayer.push({ ecommerce: null });
+
+    dataLayer.push({
+      event: 'add_to_wishlist',
+      ecommerce: {
+        currency: 'RUB',
+        value: price,
+        items: [{
+          item_name: item.find('[data-name]').text(),
+          item_id: item.find('[data-id]').val(),
+          price: price,
+          item_brand: item.find('[data-brand]').val(),
+          item_category: item.find('[data-category]').val(),
+          item_list_name: scope,
+          index: item.index() + 1,
+          quantity: 1,
+        }]
+      }
+    });
+
+    console.log({
+      event: 'add_to_wishlist',
+      ecommerce: {
+        currency: 'RUB',
+        value: price,
+        items: [{
+          item_name: item.find('[data-name]').text(),
+          item_id: item.find('[data-id]').val(),
+          price: price,
+          item_brand: item.find('[data-brand]').val(),
+          item_category: item.find('[data-category]').val(),
+          item_list_name: scope,
+          index: item.index() + 1,
+          quantity: 1,
+        }]
+      }
+    });
   });
 }
 
@@ -676,7 +755,7 @@ function clickEventAjax() {
     e.preventDefault();
 
     const thisObj = $(this),
-      container = thisObj.parents('[data-container]'),
+      container = thisObj.parents('[data-ajax-event-click-container]'),
       url = container.data('url');
 
     $.ajax({
