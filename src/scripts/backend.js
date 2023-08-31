@@ -437,6 +437,13 @@ window.objFormSuccess = {
       },
     });
   },
+  generalPixel: form => {
+    const id = form.data('general-pixel');
+
+    console.log(id);
+
+    generalPixel.postClick(id);
+  },
 }
 
 window.objFormErrors = {
