@@ -193,7 +193,7 @@ function cdekWidget() {
     hidecash: true,
     hidedelt: true,
     onReady: () => {
-      const geo = $('[data-geo]').val();
+      const geo = $('[data-geo]').data('city');
 
       if (geo) {
         window.cdekWidjet.city.set(geo);
@@ -334,7 +334,10 @@ function closeOutFocus(elem) {
 function orderRefresh() {
   $(document).on('click', '[data-order-refresh-event]', function () {
     const thisObj = $(this),
-      data = thisObj.data('order-refresh');
+      data = thisObj.data('order-refresh'),
+      city = thisObj.data('city');
+
+    $('[data-geo]').attr('data-city', city);
 
     $.ajax({
       type: 'POST',
@@ -344,7 +347,7 @@ function orderRefresh() {
         replace(r);
 
         if (window.cdekWidjet.ready) {
-          window.cdekWidjet.city.set(thisObj.text());
+          window.cdekWidjet.city.set(city);
         }
       },
     });
@@ -355,8 +358,6 @@ function geo() {
   closeOutFocus($('[data-container=geo]'));
 
   const locationAll = JSON.parse($('[data-all-location]').val());
-
-  console.log(locationAll);
 
   $(document).on('input', '[data-geo]', function() {
     const thisObj = $(this),
@@ -414,7 +415,7 @@ function geo() {
 
               str += item.DISPLAY;
 
-              items.append(`<div class="city-drop__item" data-append-input-val data-order-refresh-event data-order-refresh='{"location": "${item.CODE}", "ajax": "delivery"}' data-form-append data-cdek-delivery-info data-field="location" data-value="${item.CODE}">${str}</div>`);
+              items.append(`<div class="city-drop__item" data-append-input-val data-order-refresh-event data-order-refresh='{"location": "${item.CODE}", "ajax": "delivery"}' data-form-append data-cdek-delivery-info data-field="location" data-value="${item.CODE}" data-city="${item.DISPLAY}">${str}</div>`);
             });
 
             empty.addClass('hidden');
