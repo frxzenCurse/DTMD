@@ -354,6 +354,10 @@ function orderRefresh() {
 function geo() {
   closeOutFocus($('[data-container=geo]'));
 
+  const locationAll = JSON.parse($('[data-all-location]').val());
+
+  console.log(locationAll);
+
   $(document).on('input', '[data-geo]', function() {
     const thisObj = $(this),
       geoContainer = thisObj.closest('[data-container=geo]'),
@@ -402,7 +406,15 @@ function geo() {
 
           if (r.data.ITEMS) {
             $.each(r.data.ITEMS, (i, item) => {
-              items.append(`<div class="city-drop__item" data-append-input-val data-order-refresh-event data-order-refresh='{"location": "${item.CODE}", "ajax": "delivery"}' data-form-append data-cdek-delivery-info data-field="location" data-value="${item.CODE}">${item.DISPLAY}</div>`);
+              let str = '';
+
+              $.each(item.PATH.reverse(), (iLocation, location) => {
+                str += locationAll[location] + ', ';
+              });
+
+              str += item.DISPLAY;
+
+              items.append(`<div class="city-drop__item" data-append-input-val data-order-refresh-event data-order-refresh='{"location": "${item.CODE}", "ajax": "delivery"}' data-form-append data-cdek-delivery-info data-field="location" data-value="${item.CODE}">${str}</div>`);
             });
 
             empty.addClass('hidden');
