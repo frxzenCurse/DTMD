@@ -357,7 +357,11 @@ function orderRefresh() {
 function geo() {
   closeOutFocus($('[data-container=geo]'));
 
-  const locationAll = JSON.parse($('[data-all-location]').val());
+  let location = $('[data-all-location]');
+
+  if (location.length) {
+    location = JSON.parse(location.val());
+  }
 
   $(document).on('input', '[data-geo]', function() {
     const thisObj = $(this),
@@ -409,8 +413,8 @@ function geo() {
             $.each(r.data.ITEMS, (i, item) => {
               let str = '';
 
-              $.each(item.PATH.reverse(), (iLocation, location) => {
-                str += locationAll[location] + ', ';
+              $.each(item.PATH.reverse(), (iLocation, locationVal) => {
+                str += location[locationVal] + ', ';
               });
 
               str += item.DISPLAY;
