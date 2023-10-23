@@ -125,11 +125,19 @@ function GA4() {
     });
   });
 
-  $(document).on('click', '[data-ga4-add-to-wishlist]', function() {
-    let item = $(this).closest('[data-container=item]');
+  $(document).on('click', '[data-ga4-add-to-wishlist]', function(e) {
+    e.stopPropagation();
+
+    const thisObj = $(this);
+
+    if (thisObj.hasClass('active')) {
+      return;
+    }
+
+    let item = thisObj.closest('[data-container=item]');
 
     if (!item.length) {
-      item = $(this);
+      item = thisObj;
     }
 
     const price = item.find('[data-price]').text(),
